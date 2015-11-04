@@ -1,7 +1,7 @@
 <!ELEMENT catalog (books, articles)>
 <!ATTLIST catalog title CDATA #IMPLIED>
 
-<!ENTITY %date "(year|month|date)">
+<!ENTITY % date "year|month|date">
 
 <!ELEMENT books (book+)>
 <!ELEMENT articles (article*)>
