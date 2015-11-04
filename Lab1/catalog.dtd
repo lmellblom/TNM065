@@ -9,13 +9,16 @@
 <!ELEMENT author (#PCDATA)>
 <!ELEMENT title (#PCDATA)>
 <!ATTLIST type genre (Computer|Fantasy|Romance|Horror|ScienceFiction|Other) #IMPLIED>
+<!ELEMENT type EMPTY>
 <!ATTLIST price unit CDATA #IMPLIED>
-
+<!ELEMENT price (#PCDATA)>
 
 <!ELEMENT shelfplacement (id+)>
 <!ATTLIST id sameshelf (yes|no) #REQUIRED>
 <!ATTLIST id id IDREF #REQUIRED>
 
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT link (#PCDATA)>
 
 <!ELEMENT article (author+,title, year?, link?)>
 <!ELEMENT author (#PCDATA)>
