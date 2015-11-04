@@ -1,0 +1,9 @@
+<!ELEMENT catalog (books, articles)>
+<!ATTLIST catalog title CDATA #IMPLIED>
+
+<!ELEMENT books (book+)>
+<!ELEMENT articles (article*)>
+
+<!ELEMENT book (author+, title, type?, price, publish_date, shelfplacement?, description?, link?)>
+
+<!ELEMENT article (author+, year?, link?, title)>

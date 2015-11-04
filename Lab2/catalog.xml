@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE catalog SYSTEM "Länk till dtd-filen">
+
+
+<catalog title="My catalog">
+<books>
+   <book id="bk101">
+      <author>Arciniegas, Fabio</author>
+      <title>XML Developer's Guide</title>
+      <type genre="Computer"/>
+      <price unit="$">23.95</price>
+      <publish_date>
+      	<year>2000</year>
+      	<month>12</month>
+      	<day>21</day>
+      </publish_date>
+      <description>This is a comprehensive guide to XML for intermediate to advanced professional developers.</description>
+      <link>http://www.amazon.com/XML-Developers-Guide-Fabio-Arciniegas/dp/0072126485</link>
+   </book>
+   
+   <book id="bk102">
+      <author>Ralls, Kim</author>
+      <title>Midnight Rain</title>
+      <type genre="Fantasy"/>
+      <price unit="$">5.95</price>
+      <publish_date>
+      	<year>2000</year>
+     	<month>12</month>
+      	<day>16</day>
+      </publish_date>
+      <shelfplacement> 
+     		<id sameshelf ="no" id="bk103" />
+       		<id sameshelf ="yes" id="bk110" />
+      </shelfplacement>
+      <description>A former architect battles corporate zombies, 
+      an evil sorceress, and her own childhood to become queen 
+      of the world.</description>
+      <link>http://www.amazon.com/</link>
+   </book>
+   
+   <book id="bk103">
+      <author>Corets, Eva</author>
+      <title>Maeve Ascendant</title>
+      <type genre="Fantasy"/>
+      <price unit="$">5.95</price>
+      <publish_date>
+      	<year>2000</year>
+      	<month>11</month>
+      	<day>17</day>
+      </publish_date>
+      <shelfplacement> 
+       		<id sameshelf ="no" id="bk102" />
+      </shelfplacement>
+      <description>After the collapse of a nanotechnology 
+      society in England, the young survivors lay the 
+      foundation for a new society.</description>
+   </book>
+   
+   <book id="bk104">
+      <author>Corets, Eva</author>
+      <title>Oberon's Legacy</title>
+      <type genre="Fantasy"/>
+      <price unit="$">5.95</price>
+      <publish_date>
+      	<year>2001</year>
+      	<month>03</month>
+      	<day>10</day>
+      </publish_date>
+      <description>In post-apocalypse England, the mysterious 
+      agent known only as Oberon helps to create a new life 
+      for the inhabitants of London. Sequel to Maeve 
+      Ascendant.</description>
+   </book>
+   
+   <book id="bk105">
+      <author>Corets, Eva</author>
+      <title>The Sundered Grail</title>
+      <type genre="Fantasy"/>
+      <price unit="$">5.95</price>
+      <publish_date>
+      	<year>2001</year>
+      	<month>09</month>
+      	<day>10</day>
+      </publish_date>
+      <description>The two daughters of Maeve, half-sisters, 
+      battle one another for control of England. Sequel to 
+      Oberon's Legacy.</description>
+   </book>
+   
+   <book id="bk106">
+      <author>Randall, Cynthia</author>
+      <title>Lover Birds</title>
+      <type genre="Romance"/>
+      <price unit="$">4.95</price>
+      <publish_date>
+      	<year>2000</year>
+      	<month>09</month>
+      	<day>02</day>
+      </publish_date>
+      <description>When Carla meets Paul at an ornithology 
+      conference, tempers fly as feathers get ruffled.</description>
+   </book>
+   
+   <book id="bk107">
+      <author>Thurman, Paula</author>
+      <title>Splish Splash</title>
+      <type genre="Romance"/>
+      <price unit="$">4.95</price>
+      <publish_date>
+        <year>2000</year>
+      	<month>11</month>
+      	<day>02</day>
+      </publish_date>
+      <description>A deep sea diver finds true love twenty 
+      thousand leagues beneath the sea.</description>
+   </book>
+ 
+   <book id="bk108">
+      <author>Knorr, Stefan</author>
+      <title>Creepy Crawlies</title>
+      <type genre="Horror"/>
+      <price unit="$">4.95</price>
+      <publish_date>
+      	<year>2000</year>
+      	<month>12</month>
+      	<day>06</day>
+      </publish_date>
+   </book>
+   
+   <book id="bk109">
+      <author>Kress, Peter</author>
+      <title>Paradox Lost</title>
+      <type genre="ScienceFiction"/>
+      <price unit="$">6.95</price>
+      <publish_date>
+      	<year>2000</year>
+      	<month>11</month>
+      	<day>02</day>
+      </publish_date>
+      <description>After an inadvertant trip through a Heisenberg
+      Uncertainty Device, James Salway discovers the problems 
+      of being quantum.</description>
+   </book>
+   
+   <book id="bk110">
+      <author>O'Brien, Tim</author>
+      <title>Microsoft .NET: The Programming Bible</title>
+      <type genre="Computer"/>
+      <price unit="$">36.95</price>
+      <publish_date>
+      	<year>2000</year>
+      	<month>12</month>
+      	<day>09</day>
+      </publish_date>
+      <shelfplacement> 
+       	<id sameshelf ="yes" id="bk102" />
+      </shelfplacement>
+      <description>Microsoft's .NET initiative is explored in 
+      detail in this deep programmer's reference.</description>
+   </book>
+   
+   <book id="bk111">
+      <author>O'Brien, Tim</author>
+      <title>MSXML3: A Comprehensive Guide</title>
+      <price unit="$">36.95</price>
+      <publish_date>
+      	<year>2000</year>
+      	<month>12</month>
+      	<day>01</day>
+      </publish_date>
+      <description>The Microsoft MSXML3 parser is covered in 
+      detail, with attention to XML DOM interfaces, XSLT processing, 
+      SAX and more.</description>
+   </book>
+   
+   <book id="bk112">
+      <author>Galos, Mike</author>
+      <title>Visual Studio 7: A Comprehensive Guide</title>
+      <type genre="Computer"/>
+      <price unit="$">49.95</price>
+      <publish_date>
+      	<year>2001</year>
+      	<month>04</month>
+      	<day>16</day>
+      </publish_date>
+      <description>Microsoft Visual Studio 7 is explored in depth,
+      looking at how Visual Basic, Visual C++, C#, and ASP+ are 
+      integrated into a comprehensive development 
+      environment.</description>    
+   </book>
+      
+      <book id="bk113">
+      <author>Fawcett, Joe</author>
+      <author>Ayers, Danny</author>
+      <author>Quin, Liam R. E.</author>
+      <title>Beginning XML</title>
+      <price unit="$">23.48</price>
+      <publish_date>
+      	<year>2012</year>
+      	<month>07</month>
+      	<day>10</day>
+      </publish_date>
+      <description>A complete update covering the many advances to the XML 
+      language. The XML language has become the standard for writing documents 
+      on the Internet and is constantly improving and evolving.</description>
+	  <link>http://www.amazon.com/Beginning-XML-Joe-Fawcett/dp/1118162137/</link>
+   </book>
+</books>
+
+<articles>
+   <article>
+	  <author>Daniela Florescu</author>
+	  <author>Donald Kossmann</author>
+      <title>Storing and Querying XML Data using an RDMBS</title>
+      <year>1999</year>
+      <link>http://dsl.serc.iisc.ernet.in/~course/TIDS/papers/daniela.pdf</link>
+   </article>
+
+   <article>
+      <author>Wim Martens</author>
+      <author>Frank Neven</author>
+      <author>Matthias Niewerth</author>
+	  <author>Thomas Schwentick</author>
+	  <title>BonXai: Combining the simplicity of DTD with the expressiveness of XML Schema</title>
+	  <year>2015</year>
+	  <link>http://dl.acm.org/citation.cfm?id=2745774</link>
+   </article>
+</articles>
+   
+</catalog>
