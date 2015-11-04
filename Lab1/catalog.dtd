@@ -1,6 +1,8 @@
 <!ELEMENT catalog (books, articles)>
 <!ATTLIST catalog title CDATA #IMPLIED>
 
+<!ENTITY %date "(year|month|date)">
+
 <!ELEMENT books (book+)>
 <!ELEMENT articles (article*)>
 
@@ -12,7 +14,7 @@
 <!ELEMENT type EMPTY>
 <!ATTLIST price unit CDATA #IMPLIED>
 <!ELEMENT price (#PCDATA)>
-
+<!ELEMENT publish_date (%date;)>
 <!ELEMENT shelfplacement (id+)>
 <!ELEMENT id EMPTY>
 <!ATTLIST id sameshelf (yes|no) #REQUIRED>
