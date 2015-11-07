@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE person SYSTEM "start.dtd">
+<!DOCTYPE person SYSTEM "http://lmellblom.github.io/TNM065/lab-dtd/start.dtd">
 <person>
   <fornamn>Anders</fornamn>
   <efternamn>Andersson</efternamn>
