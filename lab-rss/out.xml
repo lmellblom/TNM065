@@ -1,0 +1,37 @@
+<?xml-stylesheet type='text/xsl' href='index-rss.xsl'?>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns="http://purl.org/rss/1.0/"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+	<channel rdf:about="http://www.itn.liu.se/">
+		<title>Bokkatalog</title>
+		<link>http://www.itn.liu.se/</link>
+		<description>En bokkatalog.</description>
+		<dc:language>en</dc:language>
+    	<dc:date>2015-11-12T02:12:06-08:00</dc:date>
+
+		<dc:publisher>LiU/ITN</dc:publisher>
+		<dc:creator>Ditt namn</dc:creator>
+
+	
+	<items>
+    	  <rdf:Seq>
+      	  <rdf:li rdf:resource='http://www.amazon.com/Modern-PHP-Features-Good-Practices/dp/1491905018/ref=sr_1_2?s=books&amp;ie=UTF8&amp;qid=1447246420&amp;sr=1-2&amp;keywords=PHP' />
+      	  <rdf:li rdf:resource='http://www.amazon.com/RDF-Database-Systems-Triples-Processing/dp/0127999574/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1447246658&amp;sr=1-1&amp;keywords=RDF' />
+      	  <rdf:li rdf:resource='http://www.amazon.com/Beginning-XML-Joe-Fawcett/dp/1118162137/' />
+      	  <rdf:li rdf:resource='http://www.amazon.com/Personal-Internet-Address-Password-Book/dp/1441303251/ref=sr_1_23?s=books&amp;ie=UTF8&amp;qid=1447234618&amp;sr=1-23&amp;refinements=p_28%3A%22%26%22' />
+      	  <rdf:li rdf:resource='http://www.amazon.com/XML-Developers-Guide-Fabio-Arciniegas/dp/0072126485' />		
+      	  </rdf:Seq>
+    </items>
+		
+		
+	</channel>
+
+    <item rdf:about='http://www.amazon.com/Modern-PHP-Features-Good-Practices/dp/1491905018/ref=sr_1_2?s=books&amp;ie=UTF8&amp;qid=1447246420&amp;sr=1-2&amp;keywords=PHP'><title>Modern PHP: New Features and Good Practices</title><link>http://www.amazon.com/Modern-PHP-Features-Good-Practices/dp/1491905018/ref=sr_1_2?s=books&amp;ie=UTF8&amp;qid=1447246420&amp;sr=1-2&amp;keywords=PHP</link><description>PHP is experiencing a renaissance, though it may be difficult to tell with all of the outdated PHP tutorials online. With this practical guide, you will learn how PHP has become a full-featured, mature language with object-orientation, namespaces, and a growing collection of reusable component libraries. Author Josh Lockhart, creator of PHP The Right Way, reveals these new language features in action. You will learn best practices for application architecture and planning, databases, security, testing, debugging, and deployment. If you have a basic understanding of PHP and want to bolster your skills, this is your book.</description><dc:creator>Lockhart, Josh</dc:creator><dc:date>2015-02-19T08:00:00-08:00</dc:date></item>
+    <item rdf:about='http://www.amazon.com/RDF-Database-Systems-Triples-Processing/dp/0127999574/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1447246658&amp;sr=1-1&amp;keywords=RDF'><title>RDF Database Systems: Triples Storage and SPARQL Query Processing</title><link>http://www.amazon.com/RDF-Database-Systems-Triples-Processing/dp/0127999574/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1447246658&amp;sr=1-1&amp;keywords=RDF</link><description>RDF Database Systems is a cutting-edge guide that distills everything you need to know to effectively use or design an RDF database. This book starts with the basics of linked open data and covers the most recent research, practice, and technologies to help you leverage semantic technology. With an approach that combines technical detail with theoretical background, this book shows how to design and develop semantic web applications, data models, indexing and query processing solutions.</description><dc:creator>Cure, Olivier</dc:creator><dc:date>2014-11-26T13:00:00-08:00</dc:date></item>
+    <item rdf:about='http://www.amazon.com/Beginning-XML-Joe-Fawcett/dp/1118162137/'><title>Beginning XML</title><link>http://www.amazon.com/Beginning-XML-Joe-Fawcett/dp/1118162137/</link><description>A complete update covering the many advances to the XML language. The XML language has become the standard for writing documents on the Internet and is constantly improving &amp; evolving</description><dc:creator>Fawcett, Joe</dc:creator><dc:date>2012-07-10T15:00:00-07:00</dc:date></item>
+    <item rdf:about='http://www.amazon.com/Personal-Internet-Address-Password-Book/dp/1441303251/ref=sr_1_23?s=books&amp;ie=UTF8&amp;qid=1447234618&amp;sr=1-23&amp;refinements=p_28%3A%22%26%22'><title>The Personal Internet Address &amp; Password Log Book</title><link>http://www.amazon.com/Personal-Internet-Address-Password-Book/dp/1441303251/ref=sr_1_23?s=books&amp;ie=UTF8&amp;qid=1447234618&amp;sr=1-23&amp;refinements=p_28%3A%22%26%22</link><description>Are you tired of losing track of those login, usernames and passwords you create every time you visit a new website? Now you can keep important website addresses, usernames, and passwords in one convenient place!</description><dc:creator>Peter Pauper</dc:creator><dc:date>2010-07-04T12:00:00-07:00</dc:date></item>
+    <item rdf:about='http://www.amazon.com/XML-Developers-Guide-Fabio-Arciniegas/dp/0072126485'><title>XML Developers Guide</title><link>http://www.amazon.com/XML-Developers-Guide-Fabio-Arciniegas/dp/0072126485</link><description>This is a comprehensive guide to XML for intermediate to advanced professional developers</description><dc:creator>Arciniegas, Fabio</dc:creator><dc:date>2000-12-21T09:00:00-08:00</dc:date></item>
+</rdf:RDF>
+

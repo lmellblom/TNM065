@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<?xml-stylesheet type="text/xsl" href="catalog-ex3.xsl"?>
+
+
+<catalog>
+<books>
+   <book id="bk101" title="XML Developer's Guide">
+      <author lname="Arciniegas" fname="Fabio"/>
+      <type genre="Computer"/>
+      <price unit="$" value="23.95"/>
+      <publish_date year="2000" month="12" day="21"/>
+   </book>
+   
+  <book id="bk102" title="Midnight Rain">
+      <author lname="Ralls" fname="Kim"/>
+      <type genre="Fantasy"/>
+      <price unit="$" value="5.95"/>
+      <publish_date year="2000" month="12" day="16"/>
+   </book>
+   
+   <book id="bk103" title="Maeve Ascendant">
+      <author lname="Corets" fname="Eva"/>
+      <type genre="Fantasy"/>
+      <price unit="$" value="5.95"/>
+      <publish_date year="2000" month="11" day="17"/>
+   </book>
+   
+    <book id="bk104" title="Oberon's Legacy">
+      <author lname="Corets" fname="Eva"/>
+      <type genre="Fantasy"/>
+      <price unit="$" value="5.95"/>
+      <publish_date year="2001" month="03" day="10"/>
+   </book>
+  
+   <book id="bk105" title="The Sundered Grail">
+      <author lname="Corets" fname="Eva"/>
+      <type genre="Fantasy"/>
+      <price unit="$" value="5.95"/>
+      <publish_date year="2001" month="09" day="10"/>
+   </book>
+   
+    <book id="bk106" title="Lover Birds">
+      <author lname="Randall" fname="Cynthia"/>
+      <type genre="Romance"/>
+      <price unit="$" value="4.95"/>
+      <publish_date year="2000" month="09" day="02"/>
+   </book>
+   
+	<book id="bk107" title="Splish Splash">
+      <author lname="Thurman" fname="Paula"/>
+      <type genre="Romance"/>
+      <price unit="$" value="4.95"/>
+      <publish_date year="2000" month="11" day="02"/>
+   </book>
+        
+	<book id="bk108" title="Creepy Crawlies">
+      <author lname="Knorr" fname="Stefan"/>
+      <type genre="Horror"/>
+      <price unit="$" value="4.95"/>
+      <publish_date year="2000" month="12" day="06"/>
+   </book>
+    
+    <book id="bk109" title="Paradox Lost">
+      <author lname="Kress" fname="Peter"/>
+      <type genre="Science Fiction"/>
+      <price unit="$" value="6.95"/>
+      <publish_date year="2000" month="11" day="02"/>
+   </book>
+       
+    <book id="bk110" title="Microsoft .NET: The Programming Bible">
+      <author lname="O'Brien" fname="Tim"/>
+      <type genre="Computer"/>
+      <price unit="$" value="36.95"/>
+      <publish_date year="2000" month="12" day="09"/>
+   </book>
+          
+    <book id="bk111" title="MSXML3: A Comprehensive Guide">
+      <author lname="O'Brien" fname="Tim"/>
+      <type genre="Computer"/>
+      <price unit="$" value="36.95"/>
+      <publish_date year="2000" month="12" day="01"/>
+   </book>
+             
+    <book id="bk112" title="Visual Studio 7: A Comprehensive Guide">
+      <author lname="Galos" fname="Mike"/>
+      <type genre="Computer"/>
+      <price unit="$" value="49.95"/>
+      <publish_date year="2001" month="04" day="16"/>
+   </book>
+                
+    <book id="bk113" title="Beginning XML">
+      <author lname="Fawcett" fname="Joe"/>
+      <author lname="Ayers" fname="Danny"/>
+      <author lname="Quin" fname="Liam R. E."/>
+      <type genre="Computer"/>
+      <price unit="$" value="23.48"/>
+      <publish_date year="2012" month="07" day="10"/>
+   </book>
+  
+</books>
+
+<articles>
+
+<article year="1999" title="Storing and Querying XML Data using an RDMBS">
+	  <author fname="Daniela" lname="Florescu"/>
+	  <author fname="Donald" lname="Kossmann"/>
+      <link l="http://dsl.serc.iisc.ernet.in/~course/TIDS/papers/daniela.pdf"/>
+</article>
+
+
+</articles>
+   
+</catalog>
