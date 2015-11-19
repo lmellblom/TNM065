@@ -12,10 +12,19 @@
        <title>Lab 3 feed</title>
      </head>
      <body>
-       <xsl:apply-templates />
+       <xsl:apply-templates select="rss:item" />
      </body>
    </html>
 </xsl:template>
 
+ <xsl:template match="rss:item">
+	<xsl:variable name="item_link" select="rss:link"/>
+    <a href="{$item_link}">
+		<h2><xsl:value-of select="rss:title"/></h2>
+	</a>
+	
+	<p><xsl:value-of select="rss:description"/></p>
+ </xsl:template>
+  
 </xsl:stylesheet>
 

@@ -12,7 +12,7 @@
       </tr>
  <?php  
     // koppla upp mot databasen med med användarnamn "rsslab", utan lösenord
-    $link = mysql_connect("mysql.itn.liu.se", "rsslab","")
+    $link = mysql_connect("mysql.itn.liu.se", "rsslab")
         or die("Could not connect");
     // välj databasen rsslab
     mysql_select_db("rsslab")
@@ -48,8 +48,6 @@
     // koda för säkerhets skull om till utf-8 innan resultatet
     // skrivs ut.
     print utf8_encode($returnstring); 
-
-    mysql_close($link)
     ?>
 
     </table>
