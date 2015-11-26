@@ -1,0 +1,16 @@
+<!ENTITY % date "year,month,day,time">
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT month (#PCDATA)>
+<!ELEMENT day (#PCDATA)>
+<!ELEMENT time (#PCDATA)>
+
+
+
+blogposts
+post id
+title
+text
+author
+likes
+hashtags
+

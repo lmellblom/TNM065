@@ -22,7 +22,7 @@
 	{
 		// if not a mobile phone, use a html stylesheet
 		header("Content-type:text/html");
-		$xsl->load('test-page.xsl');
+		$xsl->load('index-page.xsl');
 	}
 	
 	// Make the transformation and print the result

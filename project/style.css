@@ -14,3 +14,13 @@
 	border:0px;
 	border-top: 1px solid gray;
 }
+
+.fa-heart:hover {
+	color: red;
+}
+
+.allPosts {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}

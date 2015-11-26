@@ -1,0 +1,50 @@
+example query :
+
+// kopplar user till en posts eftersom user ligger i en egen tabell
+SELECT user.name, posts.title, posts.text, posts.date
+FROM posts
+INNER JOIN user on posts.userid = user.id
+ORDER BY posts.date DESC, user.name DESC;
+
+// ordnar hur många likes en post har.. 
+SELECT posts.title, COUNT(likes.userid)
+FROM posts
+LEFT JOIN likes ON likes.postid = posts.id
+GROUP BY posts.id;
+
+// visar vem som gjort likes till en post
+SELECT posts.title, likes.userid, user.name
+FROM posts
+LEFT JOIN likes ON likes.postid = posts.id
+LEFT JOIN user ON user.id = likes.userid
+-> kan lägga till detta WHERE posts.id = 3 
+om man vill hitta till en specifik post.
+
+
+// hämtar hashtags till en specifik post
+SELECT hashtags.name
+FROM posts
+JOIN hashtags on posts.id = hashtags.postid
+where posts.id = 3
+
+
+// få ut alla hashtags och hur många det finns av varje hashtag
+SELECT hashtags.name, COUNT(hashtags.name)
+FROM hashtags
+GROUP BY hashtags.name;
+
+// välj ut en hashtag och visa alla poster som tillhör den..
+SELECT user.name, posts.title, posts.text, posts.date, hashtags.name
+FROM posts
+INNER JOIN user on posts.userid = user.id
+JOIN hashtags on posts.id = hashtags.postid
+WHERE hashtags.name = "tankar"
+ORDER BY posts.date DESC, user.name DESC
+
+// lägga till post med hashtags samtidigt för att få samma post id:
+INSERT INTO posts (title, text, userid) 
+VALUES ('testTitell2', 'bara mer text. mer test text massor ord bara.', 1);
+INSERT INTO hashtags (postid, name)
+VALUES (LAST_INSERT_ID(), "tag");
+INSERT INTO hashtags (postid, name)
+VALUES (LAST_INSERT_ID(), "tag2");
