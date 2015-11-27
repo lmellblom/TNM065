@@ -48,3 +48,18 @@ INSERT INTO hashtags (postid, name)
 VALUES (LAST_INSERT_ID(), "tag");
 INSERT INTO hashtags (postid, name)
 VALUES (LAST_INSERT_ID(), "tag2");
+
+
+
+// tar ut vem som gillat en specifick post
+SELECT user.name, user.id, likes.postid
+FROM likes
+INNER JOIN user on likes.userid = user.id
+skriva WHERE likes.postid = 
+
+
+// innan man gillar för att se om det redan finns lagrat i databasen..
+SELECT `postid`, `userid` FROM `likes` WHERE `postid` = 23 AND `userid` = 1
+
+
+

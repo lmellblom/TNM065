@@ -5,12 +5,23 @@
 <!ELEMENT time (#PCDATA)>
 
 
+<!ELEMENT blogposts (currentUser?, post*)>
+<!ELEMENT currentUser EMPTY>
+<!ATTLIST currentUser id (#PCDATA) #REQUIRED>
+<!ATTLIST currentUser name (#PCDATA) #REQUIRED>
+<!ATTLIST currentUser authority (0|1) #REQUIRED>
 
-blogposts
-post id
-title
-text
-author
-likes
-hashtags
 
+<!ELEMENT post (title, text, publish_date, author, hashtags?, numberOfLikes)>
+<!ATTLIST post id CDATA #REQUIRED>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT text (#PCDATA)>
+<!ELEMENT publish_date (%date;)>
+<!ELEMENT author (#PCDATA)>
+<!ATTLIST author id CDATA #REQUIRED>
+<!ELEMENT hashtags (hashtag*)>
+<!ELEMENT hashtag (#PCDATA)>
+<!ELEMENT numberOfLikes (#PCDATA)>
+
+
+ändra numberOfLikes till typ likes elr liknande.. 
