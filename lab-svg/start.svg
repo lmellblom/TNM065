@@ -3,20 +3,57 @@
      version="1.1" baseProfile="full" 
      width="5cm" height="20cm">
              
+<!-- important to have the same dur-length on the animations in order to get the timing right -->
+<g>
+  <g>
+
+  <!-- the cute little smiley -->
   <circle cx="72" cy="72" r="64" 
-    style="fill:yellow;stroke:black;stroke-width:4"
-    style="fill:yellow;stroke:black;stroke-width:6"/>
+    style="fill:yellow;stroke:black;stroke-width:4"/>
     <path d="M30.399,74.633c16.841,23.034,53.97,43.701,86.431,5.017c-1.459-0.969-2.388-1.513-4.608-2.146  c3.702-1.643,10.889,0.622,10.294,6.878c-1.491-2.17-3.346-3.461-3.346-3.461c-38.763,50.08-75.706,36.05-90.756-4.703  c-1.051,0.929-1.778,1.576-3.316,3.822c-1.13-5.722,5.337-10.087,10.47-8.349C33.143,72.66,31.981,73.365,30.399,74.633z"/>
 	<ellipse cx="55.203" cy="51.5" rx="6.704" ry="13.417"/>
 	<ellipse cx="87.667" cy="51.5" rx="6.704" ry="13.417"/>
 
+  <!-- add the text. the text will move as the smiley since in the same group.
+  also animation on the text color. will animate between red-blue-green-yellow-red and then back to the first again. 
+  the color will be animated between these colors (blending) -->
+    <text x="40" y="35" fill="red">
+      TNM065
+      <animate attributeType="XML"
+                   attributeName="fill"
+                   values="red;blue;green;yellow;red"
+                   dur="16s"
+                   repeatCount="indefinite"/>
+    </text>
 
+  <!-- rotates the circle -->
   <animateTransform attributeName="transform"
-                          attributeType="XML"
-                          type="translate"
-                          from="0 0"
-                          to="150 20"
-                          dur="10s"
-                          repeatCount="indefinite"/>
-   		
+            type="rotate"
+            values="0 72 72; 410 72 72; 0 72 72"
+            begin="0s"
+            dur="8s"
+            repeatCount="indefinite"
+        />
+
+   </g>
+
+    <!--will translate the whole smiley up and down, from (0,0) to (0,200) and back again with the rotation also since group
+    those togehter -->
+    <animateTransform attributeName="transform" type="translate"
+     values="0 0;0 200;0 0" begin="0s" dur="8s" fill="freeze"
+     repeatCount="indefinite" />
+
+  </g>
+    
+  <g>
+    <!-- animate the line, to go from 10->210 to 10 agian -->
+    <line x1="72" y1="0" x2="72" y2="10" style="stroke:rgb(0,0,0);stroke-width:4">
+     <animate attributeType="XML"
+                 attributeName="y2"
+                 values="10;210;10"
+                 dur="8s"
+                 repeatCount="indefinite"/>
+    </line>
+  </g>
+
 </svg>
