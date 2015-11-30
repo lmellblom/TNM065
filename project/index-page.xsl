@@ -18,6 +18,9 @@
 			console.log(postID);
 			// like ska ju ändra i databasen.. 
 			// only like if the user is logged in!!
+		};
+		function selectionPost() {
+			return "post";
 		}
 	</script>
 	<title>TNM065 | moments</title>
@@ -110,13 +113,12 @@
 		<div>
 			<h4>Alla hashtags</h4>
 			<p><xsl:apply-templates select="post/hashtags/hashtag" /></p>
-			<!--<xsl:template match="post/hashtags"> 
-			<p>
-				<xsl:value-of select="hashtag" />
-
-			</p>
-			</xsl:template>-->
 		</div>
+
+		<!--<div>
+			<h4>Alla dina uppdateringar</h4>
+			<xsl:apply-templates select="post[author[@id= ../../currentUser/@id]]" />
+		</div>-->
 
 	</div><!-- end right column -->
 
@@ -140,7 +142,7 @@
  	<div class="row well well-sm">
 
 		<div class="col-xs-2 alignCenter">
-			<p class="userInfo text-uppercase">
+			<p class="text-center userInfo text-uppercase">
 				<xsl:variable name="profileID" select="author/@id"/>
 				<a href="?profile={$profileID}"><span class="fa fa-user"></span> <xsl:value-of select="author"/></a>
 			</p>
@@ -163,8 +165,8 @@
 
 		 	<!-- lägga till redigeringsknapp här!! admin ska kunna redigera alla -->
 		 	<xsl:if test="author/@id = ../currentUser/@id or ../currentUser/@authority = 0">
-		 		<p>
-		 			din post alt or du admin, ska kunna redigera denna
+		 		<p class="pull-right">
+		 			<a href="#"><span class="fa fa-pencil"></span> edit </a>
 		 			<a href="updateOrDeletePost.php?delete={$post_id}"><span class="fa fa-times"></span> delete </a>
 		 		</p>
 		 	</xsl:if>

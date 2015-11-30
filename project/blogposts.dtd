@@ -1,27 +1,19 @@
-<!ENTITY % date "year,month,day,time">
-<!ELEMENT year (#PCDATA)>
-<!ELEMENT month (#PCDATA)>
-<!ELEMENT day (#PCDATA)>
-<!ELEMENT time (#PCDATA)>
-
-
 <!ELEMENT blogposts (currentUser?, post*)>
+
 <!ELEMENT currentUser EMPTY>
 <!ATTLIST currentUser id (#PCDATA) #REQUIRED>
 <!ATTLIST currentUser name (#PCDATA) #REQUIRED>
 <!ATTLIST currentUser authority (0|1) #REQUIRED>
 
 
-<!ELEMENT post (title, text, publish_date, author, hashtags?, numberOfLikes)>
+<!ELEMENT post (title, text, publish_date, author, hashtags?, likes?)>
 <!ATTLIST post id CDATA #REQUIRED>
 <!ELEMENT title (#PCDATA)>
 <!ELEMENT text (#PCDATA)>
-<!ELEMENT publish_date (%date;)>
+<!ELEMENT publish_date (#PCDATA)>
 <!ELEMENT author (#PCDATA)>
 <!ATTLIST author id CDATA #REQUIRED>
 <!ELEMENT hashtags (hashtag*)>
 <!ELEMENT hashtag (#PCDATA)>
-<!ELEMENT numberOfLikes (#PCDATA)>
-
-
-ändra numberOfLikes till typ likes elr liknande.. 
+<!ELEMENT likes (like*)>
+<!ELEMENT like (#PCDATA)>
