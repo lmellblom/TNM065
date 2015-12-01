@@ -32,7 +32,7 @@
 	} else { // should update the form instead.. 
 
 		// delete all the hashtags associated with the post and then add the new once to be sure..
-		$user = $_SESSION['userid']; // get from the session id. ska finnas en sådan variabel.. 
+/*		$user = $_SESSION['userid']; // get from the session id. ska finnas en sådan variabel.. 
 		$theText = $_POST[postText]; 
 		$theText = preg_replace("/'/","&#8217;", $theText);
 
@@ -55,7 +55,7 @@
 		    		echo mysql_error();
 		    	}
 			}
-		} 
+		} */
 	}
 
     mysql_close();

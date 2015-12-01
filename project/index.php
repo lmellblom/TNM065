@@ -55,24 +55,10 @@
         $author = $line->name; 
         $userid = $line->userid; 
         $postID = $line->id;
+        $date = $line->date;
 
-        $query_likes = "SELECT COUNT(likes.userid) as 'nrLikes'
-                    FROM posts
-                    LEFT JOIN likes ON likes.postid = posts.id
-                    WHERE posts.id=$postID";  
-
-        $resultLikes = mysql_query($query_likes)
-            or die("Query likes failed");     
-
-        $likes = mysql_fetch_assoc($resultLikes)['nrLikes'];
-
-        $query_hashtags = "SELECT hashtags.name
-                    FROM posts
-                    JOIN hashtags on posts.id = hashtags.postid
-                    where posts.id = $postID";
-
-        $resultHashtags = mysql_query($query_hashtags)
-            or die("Query likes failed"); 
+        $date = strtotime($date);
+        $date = date('Y.m.d H:i',$date);//date('c', $date);
 
         // bygg upp en sträng innehållande det resultat vi vill ha
         // slå ihop två strängar med ".".blogposts
@@ -80,6 +66,17 @@
         $returnstring = $returnstring . "<title>$title</title>";
         $returnstring = $returnstring . "<text>$text</text>";
         $returnstring = $returnstring . "<author id='$userid'>$author</author>"; 
+        $returnstring = $returnstring . "<publish_date>$date</publish_date>";
+
+
+        // get the hashtags
+        $query_hashtags = "SELECT hashtags.name
+                    FROM posts
+                    JOIN hashtags on posts.id = hashtags.postid
+                    where posts.id = $postID";
+
+        $resultHashtags = mysql_query($query_hashtags)
+            or die("Query likes failed"); 
 
         if(mysql_num_rows($resultHashtags) != 0) {
             $returnstring = $returnstring . "<hashtags>";
@@ -90,7 +87,25 @@
             $returnstring = $returnstring . "</hashtags>";
         }
 
-        $returnstring = $returnstring . "<numberOfLikes>$likes</numberOfLikes>"; 
+        // get all the likes
+        $query_likes = "SELECT user.name, user.id
+            FROM likes
+            INNER JOIN user on likes.userid = user.id
+            WHERE likes.postid=$postID";
+
+        $resultLikes = mysql_query($query_likes)
+            or die("Query likes failed");     
+
+        if(mysql_num_rows($resultLikes) != 0) {
+            $returnstring = $returnstring . "<likes>";
+            while ($likeLine = mysql_fetch_object($resultLikes)) {
+                $likeUserID = $likeLine->id;
+                $likeUser = $likeLine->name;
+                $returnstring = $returnstring . "<like userid='$likeUserID' username='$likeUser' />";
+            }
+            $returnstring = $returnstring . "</likes>";
+        }
+
         $returnstring = $returnstring . "</post>";
 
     }

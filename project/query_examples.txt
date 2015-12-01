@@ -49,6 +49,12 @@ VALUES (LAST_INSERT_ID(), "tag");
 INSERT INTO hashtags (postid, name)
 VALUES (LAST_INSERT_ID(), "tag2");
 
+// tar ut user name..
+SELECT likes.userid, user.name
+                    FROM posts
+                    LEFT JOIN likes ON likes.postid = posts.id
+                    LEFT JOIN user ON likes.userid = user.id
+                    WHERE posts.id=23
 
 
 // tar ut vem som gillat en specifick post
@@ -62,4 +68,9 @@ skriva WHERE likes.postid =
 SELECT `postid`, `userid` FROM `likes` WHERE `postid` = 23 AND `userid` = 1
 
 
+// count how many likes
+SELECT COUNT(likes.userid) as 'nrLikes'
+                    FROM posts
+                    LEFT JOIN likes ON likes.postid = posts.id
+                    WHERE posts.id=$postID
 

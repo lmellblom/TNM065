@@ -16,4 +16,6 @@
 <!ELEMENT hashtags (hashtag*)>
 <!ELEMENT hashtag (#PCDATA)>
 <!ELEMENT likes (like*)>
-<!ELEMENT like (#PCDATA)>
+<!ELEMENT like EMPTY>
+<!ATTLIST like userid (#PCDATA) #REQUIRED>
+<!ATTLIST like username (#PCDATA) #REQUIRED>

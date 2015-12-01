@@ -9,8 +9,10 @@
 
 <head>
 	<meta charset="UTF-8" />
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
+
 	<link rel="stylesheet" href="style.css" />
 	<script>
 		function addLike(postID){
@@ -19,9 +21,6 @@
 			// like ska ju ändra i databasen.. 
 			// only like if the user is logged in!!
 		};
-		function selectionPost() {
-			return "post";
-		}
 	</script>
 	<title>TNM065 | moments</title>
 </head>
@@ -157,10 +156,9 @@
 		 		<!-- check if you have liked the post? .likedPost -->
 		 		<a href="likePost.php?postID={$post_id}">
 		 		<span type="submit" class="like fa fa-heart"></span></a>
-			 	<xsl:value-of select="numberOfLikes"/>
-
+		 		<xsl:value-of select="count(likes/like)" />
 		 	</p>
-		 	<!--<p><span class="fa fa-clock-o"></span> datum</p>-->
+		 	<p>Vilka har gillat: <xsl:apply-templates select="likes/like" /></p>
 		 	<p><span class="hashtags"><xsl:apply-templates select="hashtags/hashtag" /></span></p>
 
 		 	<!-- lägga till redigeringsknapp här!! admin ska kunna redigera alla -->
@@ -170,8 +168,18 @@
 		 			<a href="updateOrDeletePost.php?delete={$post_id}"><span class="fa fa-times"></span> delete </a>
 		 		</p>
 		 	</xsl:if>
+
+		 	<!-- vilket datum -->
+		 	<p>
+		 		<span class="fa fa-clock-o"></span> <i><xsl:value-of select="publish_date" /></i>
+		 	</p>
 	 	</div>
  	</div>
+ </xsl:template>
+
+ <xsl:template match="likes/like">
+ 	<xsl:variable name="userID" select="@userid"/>
+ 	<a href="?profile={$userID}"><xsl:value-of select="@username"/></a>,
  </xsl:template>
 
  <xsl:template match="hashtags/hashtag">
