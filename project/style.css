@@ -1,0 +1,47 @@
+.hashtags small{
+	margin: 0 5px 0 5px;
+}
+
+.userImage {
+	width: 80px;
+}
+
+.well {
+	margin:2px;
+	background-color: white !important;
+	background-image: none;
+	box-shadow: none;
+	border:0px;
+	border-top: 1px solid gray;
+}
+
+.fa-heart:hover {
+	color: red;
+}
+
+.likedPost {
+	color: red;
+}
+
+a .fa-heart {
+	color: black;
+}
+
+.allPosts {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.jumbotron {
+	background-image: url("img/symphony.png");
+}
+
+.jumbotron a {
+	color:black;
+}
+
+.userInfo {
+	margin-top: auto;
+	margin-bottom: auto;
+}

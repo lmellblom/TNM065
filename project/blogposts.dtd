@@ -1,0 +1,21 @@
+<!ELEMENT blogposts (currentUser?, post*)>
+
+<!ELEMENT currentUser EMPTY>
+<!ATTLIST currentUser id (#PCDATA) #REQUIRED>
+<!ATTLIST currentUser name (#PCDATA) #REQUIRED>
+<!ATTLIST currentUser authority (0|1) #REQUIRED>
+
+
+<!ELEMENT post (title, text, publish_date, author, hashtags?, likes?)>
+<!ATTLIST post id CDATA #REQUIRED>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT text (#PCDATA)>
+<!ELEMENT publish_date (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ATTLIST author id CDATA #REQUIRED>
+<!ELEMENT hashtags (hashtag*)>
+<!ELEMENT hashtag (#PCDATA)>
+<!ELEMENT likes (like*)>
+<!ELEMENT like EMPTY>
+<!ATTLIST like userid (#PCDATA) #REQUIRED>
+<!ATTLIST like username (#PCDATA) #REQUIRED>
