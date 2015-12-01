@@ -1,0 +1,27 @@
+<?xml-stylesheet type="text/xsl" href="math.xsl"?>
+<math-test>
+  <h1>Multiplikation</h1>
+  <times>
+    <p1>6</p1>
+    <p2>5</p2>
+  </times>
+  
+  <h1>Factorial</h1>
+  <fact>
+    6
+  </fact>
+  
+  <h1>Fibonacci</h1>
+  <fib>
+    8
+  </fib>
+  
+  <h1>Vända en sträng</h1>
+  <reverse>TNM065 Dokumentstrukturer</reverse>
+  
+  <h1>Euclides algoritm</h1>
+  <euclides>
+    <term>195</term>
+    <term>325</term>
+  </euclides>
+</math-test>

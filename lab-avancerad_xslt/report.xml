@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="report.xsl"?>
+<report>
+  <head>
+    <authors>
+      <author>Daniel Nystr&#246;m</author>
+      <author>Sasan Gooran</author>
+    </authors>
+    <keywords>
+      <keyword>TNM065</keyword>
+      <keyword>Dokumentstrukturer</keyword>
+    </keywords>
+    <title>TNM065 Dokumentstrukturer</title>
+  </head>
+  <body>
+    <h1 title="Kursinneh&#229;ll">
+      <p>
+		Kursen g&#229;r igenom XML och ett antal XML-relaterade tekniker, vilka &#228;r grunden f&#246;r hierarkiskt strukturerade dokument. Fokus ligger p&#229; publicering och parallellpublicering. De huvudsakliga omr&#229;den som behandlas &#228;r transformationer mellan olika XML-vokabul&#228;rer med XSLT, s&#246;kning i XML-strukturer med XPath, constraints med DTD, samt dynamisk generering av XML med hj&#228;lp av PHP och databaser.      </p>
+      </h1>
+    <h1 title="Examination och betyg">
+      <p>
+		Kursen har endast ett examinationsmoment (UPG1, 6 hp, betyg: U, 3, 4, 5) som omfattar b&#229;de laborationer och en projektuppgift.  Slutbetyget i kursen best&#228;ms av ett po&#228;ngsystem, d&#228;r varje delmoment ger ett visst antal po&#228;ng. F&#246;r att n&#229; betyg 3 kr&#228;vs godk&#228;nt p&#229; de obligatoriska laborationerna, att man uppfyller minimikraven f&#246;r projektet, samt att man l&#228;mnat in uppgifterna i tid.       </p>
+      <p> Betygsgr&#228;nserna &#228;r: </p>  	<p>Betyg 3: 50 po&#228;ng (varav minst 21p fr&#229;n laborationer) </p>	<p>Betyg 4: 65 po&#228;ng (varav minst 33p fr&#229;n laborationer) </p>	<p>Betyg 5: 80 po&#228;ng (varav minst 40p fr&#229;n laborationer) </p>
+    </h1>
+    <h1 title="Kursorganisation ">
+      <p>
+		Halva kursen best&#229;r av f&#246;rel&#228;sningar och laborationer inom ovanst&#229;ende omr&#229;den, halva kursen best&#229;r av en projektuppgift vilken g&#229;r ut p&#229; att implementera ett XML-baserat informations-system. Utdelning av kursmaterial, information och redovisning av laborationer sker i kursrummet p&#229; Lisam, vilket g&#246;r att kursen g&#229;r utm&#228;rkt att l&#228;sa p&#229; egen hand. Det enda moment som kr&#228;ver n&#228;rvaro &#228;r projektredovisningen vid kursens slut.      </p>
+    	<h2 title="Laborationer">
+      	<p>
+		Laborationsdelen av kursen ger inte separata po&#228;ng i Ladok, men &#228;r en obligatorisk del av kursen som m&#229;ste redovisas f&#246;r godk&#228;nt. I kursen ing&#229;r tre obligatoriska laborationer, som var och en ger maximalt 7 po&#228;ng (+ 2 bonuspo&#228;ng vardera om de l&#228;mnas in i tid).      	</p>
+        <p>	Lab 1:DTD </p> 	<p>	Lab 2: XSLT </p>		<p>	Lab 3: RDF och RSS med PHP och databaser </p>
+		<h3 title= "Frivilliga extra laborationer">
+     	<p>Extralab 1: XPath </p>		<p>Extralab 2: SVG </p>		<p>Extralab3: XML Schemas </p>		<p>Extralab 4: Avancerade XSLT-transformationer </p>
+		<p>
+		Laborationerna genomf&#246;rs i grupper om tv&#229; (eller individuellt) och redovisas genom inl&#228;mningsfunktionen i Lisam. Om inl&#228;mning av de obligatoriska laborationerna sker inom respektive deadline (se nedan) ges 2 bonuspo&#228;ng per lab.  De frivilliga extralaborationerna ger ingen tidsbonus. De har en gemensam deadline och kan inte redovisas efter detta datum. </p>
+		</h3>
+        </h2>
+       <h2 title="F&#246;rel&#228;sningar">
+       	<p>
+		F&#246;rel&#228;sningarna tar huvudsakligen upp teoribakgrund f&#246;r de obligatoriska laborationerna, samt projektet. D&#229; de frivilliga extralaborationerna &#228;r att betrakta som &#246;verkurs, ber&#246;rs de endast &#246;versiktligt p&#229; f&#246;rel&#228;sningarna. De studenter som siktar p&#229; h&#246;gre betyg genom att g&#246;ra extralaborationer f&#246;rv&#228;ntas ta ett st&#246;rre ansvar n&#228;r det g&#228;ller att sj&#228;lv hitta, l&#228;sa och ta till sig relevant teori.       </p>
+     	</h2>
+     	<h2 title="Projekt">
+       	<p>
+		Det avslutande projektet genomf&#246;rs antingen i grupper om tv&#229; (vilket rekommenderas starkt), eller individuellt. Obligatoriska moment i projektet &#228;r:       </p>
+		<p>Projektide och projektplan </p>		<p>DTD och databasstruktur </p>		<p>Skriftlig rapport </p>		<p>Redovisning </p>
+		<p>
+		Redovisning av projektet sker muntligt, d&#228;r gruppen (eller studenten) demonstrerar sitt projekt f&#246;r kursens l&#228;rare, under ca 10-15 minuter.  Godk&#228;nt projektuppgift (grunduppgiften, utan utvidgningar) ger 20 po&#228;ng.       </p>
+     </h2>
+     <h2 title="Diskussionsforum">
+       <p>
+		I kursrummet p&#229; LISAM finns diskussionsgrupper f&#246;r varje laboration, respektive projektet. Se till att utnyttja m&#246;jligheten att st&#228;lla fr&#229;gor, till varandra, och till kursens l&#228;rare. M&#229;nga vanliga fr&#229;gor har antagligen redan st&#228;llts och f&#246;rhoppningsvis besvarats av n&#229;gon. Som extra morot f&#229;r de studenter som &#228;r aktiva i diskussionsforumen extra bonuspo&#228;ng, som kan h&#246;ja betyget.        </p>
+       <p>
+		Diskussioner, tipps och hj&#228;lp mellan grupperna uppmuntras, s&#229;v&#228;l i diskussionsforumen som utanf&#246;r. Att direkt kopiera kod av andra till laborationer eller projekt &#228;r d&#228;remot inte till&#229;tet och &#228;r att betrakta som fusk.       </p>
+     </h2>
+    </h1>
+    <h1 title="Kurslitteratur">
+      <p>Rekommenderad kursbok &#228;r:</p>
+      <p>XML in a nutshell, 3rd edition av Elliotte Rusty. ISBN 0-596-00764-7.</p>
+      <p>Det finns andra bra b&#246;cker om XML, och det g&#229;r &#228;ven utm&#228;rkt att klara kursen utan boken, men kapitel- och sidh&#228;nvisningar i laborationshandledningarna &#228;r till denna bok.</p>
+      <p>F&#246;rel&#228;sningsanteckningarna kommer att t&#228;cka en del av det ni beh&#246;ver f&#246;r de obligatoriska laborationerna. Dessutom finns ofta bra tutorials tillg&#228;ngliga f&#246;r de omr&#229;den som avhandlas i kursen (t.ex. p&#229; W3C). Vi f&#246;rs&#246;ker l&#228;nka till en del av dessa i labb- och projektanvisningar. Om ni hittar andra bra k&#228;llor till information och kunskap inf&#246;r laborationer och projekt, s&#229; tipsa g&#228;rna varandra om detta i diskussionsforumen! </p>
+    </h1>
+
+  </body>
+</report>
