@@ -6,15 +6,32 @@
 
 	// get the username and password from the form, check if the two passwords are exakt match.. (LATER CHECK; TODO!!!)
 	$username = $_POST[usr];
+
+	// when adding the username it should not be case sensitive so transform to lowercases.
+	$username = strtolower($username);
+
 	$pwd = $_POST[pwd];
 	$pwd2 = $_POST[pwd2];
 
-	$query = "INSERT INTO user (name,pwd)
-		VALUES ('$username','$pwd')";
+	// check if the username already exists! 
+	$usernameQuery = "SELECT * FROM user WHERE name = '$username'";
+	$userCheck = mysql_query($usernameQuery);
+	if(!mysql_query($usernameQuery)) {
+		echo mysql_error();
+	}
+	// if we got a hit, return to the indexpage with a error message..
+	if(mysql_num_rows($userCheck) != 0) {
+		$_SESSION['isLoggedIn'] = false;
 
-	// TODO, look up so no name and password is the same in the database.. 
-	// later issue
-	
+		mysql_close();
+		header("Location: index.php?loginError=username");
+		exit();
+	}
+
+	// frid och fröjd. kan lägga in i databasen
+	$query = "INSERT INTO user (name,pwd)
+		VALUES ('$username','$pwd')";	
+
 	if(!mysql_query($query)) {
 		echo mysql_error();
 	}

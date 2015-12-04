@@ -8,6 +8,7 @@
 
 	// get the username and password from the form
 	$username = $_POST[usr];
+	$username = strtolower($username); // transform to lowercase in order to avoid case sensitiv!
 	$pwd = $_POST[pwd];
 
 	// get information again from the database
@@ -29,6 +30,10 @@
 	} else {
 		// do something here. like give a error message. TODO
 		$_SESSION['isLoggedIn'] = false;
+		
+		mysql_close();
+		header("Location: index.php?loginError=noMatch");
+		exit();
 	}
 
     mysql_close();

@@ -23,6 +23,10 @@
 	color: red;
 }
 
+.redHeart {
+	color: red !important;
+}
+
 a .fa-heart {
 	color: black;
 }

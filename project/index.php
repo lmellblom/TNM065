@@ -23,6 +23,17 @@
             INNER JOIN user on posts.userid = user.id
             WHERE user.id = $profileID
             ORDER BY posts.date DESC, user.name DESC";
+    } else if(isset($_GET['search'])) {
+        $hashtag = $_GET['search']; 
+        $query = $test="SELECT user.name, user.id as 'userid', posts.title, posts.text, posts.date, posts.id
+            FROM posts
+            INNER JOIN user on posts.userid = user.id
+            JOIN hashtags on posts.id = hashtags.postid
+            WHERE hashtags.name LIKE '%$hashtag%' 
+            ORDER BY posts.date DESC, user.name DESC";
+
+        $returnstring = $returnstring . "<search>$hashtag</search>";
+
     } else {
         // en sql-fråga som väljer ut alla rader sorterade fallande på år och vecka
         $query = "SELECT user.name, user.id as 'userid', posts.title, posts.text, posts.date, posts.id

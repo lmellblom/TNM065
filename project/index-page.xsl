@@ -14,12 +14,21 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
 
 	<link rel="stylesheet" href="style.css" />
+	
 	<script>
-		function addLike(postID){
-			console.log("like");
-			console.log(postID);
-			// like ska ju ändra i databasen.. 
-			// only like if the user is logged in!!
+		function showForm(elementID, postID){
+			// uses ajax to genereate the edit form for a post inline.
+
+			var xmlhttp = new XMLHttpRequest();
+	        xmlhttp.onreadystatechange = function() {
+	            if (xmlhttp.readyState == 4) {
+	            	if(xmlhttp.status == 200){
+	                document.getElementById(elementID).innerHTML = xmlhttp.responseText;
+	                }
+	            }
+	        };
+	        xmlhttp.open("GET", "createForm.php?postID=" + postID);
+	        xmlhttp.send();
 		};
 	</script>
 	<title>TNM065 | moments</title>
@@ -36,13 +45,38 @@
 	<div class="container row allPosts"> <!-- wrapper -->
 
 	<div class="container col-sm-8 posts">
+
+		<!-- search, flytta denna senare.. -->
+		<form class="form-inline" role="form" action="searchHashtags.php" method="POST">
+		<div class="input-group">
+		      <input type="search" class="form-control" name="search" placeholder="Search for hashtags.." />
+		      <span class="input-group-btn">
+		        <button type="submit" class="btn btn-default">Go!</button>
+		      </span>
+	    </div><!-- /input-group -->
+	    </form>
+
+
 		<h3>Feed</h3>
 		<div id="showPosts">
 			<!--<xsl:apply-templates select="post[author[@id=1]]" />-->
-			<xsl:apply-templates select="post" />
+			<!--<xsl:apply-templates select="post[hashtags[hashtag[contains(text(), 'ta')]]]" />, väljer ut hashtags. -->
+			<!--<xsl:apply-templates select="post[hashtags[hashtag[contains(text(), '')]]]" />-->
+			<!-- check if post is empty, then write a text message instead -->
+			<xsl:if test="search">
+				<h4>Du sokte pa <xsl:value-of select="search"/></h4>
+			</xsl:if>
+
+			<xsl:choose>
+				<xsl:when test="count(post)=0">
+					<p>Har var det tomt..</p>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:apply-templates select="post" />
+				</xsl:otherwise>
+			</xsl:choose>			
 		</div>
-		<!-- instead of changing the query, change only this template select!!  -->
-		<!-- -->
+
 	</div>
 
 	<div class="container col-sm-4">
@@ -52,7 +86,7 @@
 			<div class="userInfo">
 			<p>Inloggad som <xsl:apply-templates select="currentUser" /> </p>
 			
-			<form class="form-horizontal" name="addOnePost" role="form" action="logOut.php" method="POST">
+			<form class="form-horizontal" role="form" action="logOut.php" method="POST">
 				<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>
 			</form>
 			</div>
@@ -60,12 +94,12 @@
 		<div class="inputForm">
 			<h3>Add post</h3>
 			<!--<span id="validateMessage"></span>-->
-			<form class="form-horizontal" name="addOnePost" role="form" action="addPost.php" method="POST">
+			<form class="form-horizontal" name="postForm" role="form" action="addPost.php" method="POST">
 			  <div class="form-group">
-			    <input type="text" class="form-control" name="postTitle" placeholder="Title" />
+			    <input type="text" class="form-control" name="postTitle" placeholder="Title" required="true" />
 			  </div>
 			  <div class="form-group">
-			    <input type="text" class="form-control" name="postText" placeholder="What are you thinking about?" />
+			    <input type="text" class="form-control" name="postText" placeholder="What are you thinking about?" required="true" />
 			  </div>
 			  <div class="form-group">
 			    <input type="text" class="form-control" name="postHashtags" placeholder="Hashtags, separate by spacing" />
@@ -81,10 +115,10 @@
 			<h3>Logga in</h3>
 			<form class="form-horizontal" name="signIn" action="logInUser.php" role="form" method="POST">
 				<div class="form-group">
-					<input type="text" class="form-control" name= "usr" placeholder="Username"/>
+					<input type="text" class="form-control" name= "usr" placeholder="Username" required="true"/>
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control" name= "pwd" placeholder="Password"/>
+					<input type="password" class="form-control" name= "pwd" placeholder="Password" required="true"/>
 				</div>
 				<button type="submit" class="btn btn-default"><span class="fa fa-sign-in"></span> Logga in</button>
 			</form>
@@ -94,13 +128,13 @@
 			<h3>Sign up!</h3>
 			<form class="form-horizontal" name="signUp" action="addUser.php" role="form" method="POST">
 				<div class="form-group">
-					<input type="text" class="form-control" name= "usr" placeholder="Username"/>
+					<input type="text" class="form-control" name= "usr" placeholder="Username" required="true"/>
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control" name= "pwd" placeholder="Password"/>
+					<input type="password" class="form-control" name= "pwd" placeholder="Password" required="true"/>
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control" name= "pwd2" placeholder="Same password again.."/>
+					<input type="password" class="form-control" name= "pwd2" placeholder="Same password again.." required="true"/>
 				</div>
 				<button type="submit" class="btn btn-default"><span class="fa fa-user-plus"></span> Skapa inlogg</button>
 			</form>
@@ -108,7 +142,7 @@
 		</xsl:otherwise>
 		</xsl:choose>
 
-	<!-- show all hashtags that are in-->
+	<!-- show all hashtags that are here. blir lite fel om man söker på user, får bara dess hahstags osv... -->
 		<div>
 			<h4>Alla hashtags</h4>
 			<p><xsl:apply-templates select="post/hashtags/hashtag" /></p>
@@ -138,7 +172,7 @@
 </xsl:template>
 
  <xsl:template match="post">
- 	<div class="row well well-sm">
+ 	<div class="row well well-sm" id="{generate-id(.)}">
 
 		<div class="col-xs-2 alignCenter">
 			<p class="text-center userInfo text-uppercase">
@@ -155,16 +189,25 @@
 		 	<p>
 		 		<!-- check if you have liked the post? .likedPost -->
 		 		<a href="likePost.php?postID={$post_id}">
-		 		<span type="submit" class="like fa fa-heart"></span></a>
+		 			<span type="submit" class="like fa fa-heart"> 
+		 			<!-- if the loggen in user has liked a post, make the heart red instead -->
+		 			<xsl:if test="likes/like[@userid = ../../../currentUser/@id]">
+		 				<xsl:attribute name="class">
+		 				redHeart like fa fa-heart
+		 				</xsl:attribute>
+		 			</xsl:if>
+		 		
+		 			</span>
+		 		</a>
 		 		<xsl:value-of select="count(likes/like)" />
 		 	</p>
 		 	<p>Vilka har gillat: <xsl:apply-templates select="likes/like" /></p>
 		 	<p><span class="hashtags"><xsl:apply-templates select="hashtags/hashtag" /></span></p>
 
-		 	<!-- lägga till redigeringsknapp här!! admin ska kunna redigera alla -->
+		 	<!-- edit and remove buttons! -->
 		 	<xsl:if test="author/@id = ../currentUser/@id or ../currentUser/@authority = 0">
 		 		<p class="pull-right">
-		 			<a href="#"><span class="fa fa-pencil"></span> edit </a>
+		 			<a onclick="showForm('{generate-id(.)}', '{$post_id}')"><span class="fa fa-pencil"></span> edit </a>
 		 			<a href="updateOrDeletePost.php?delete={$post_id}"><span class="fa fa-times"></span> delete </a>
 		 		</p>
 		 	</xsl:if>
@@ -179,7 +222,8 @@
 
  <xsl:template match="likes/like">
  	<xsl:variable name="userID" select="@userid"/>
- 	<a href="?profile={$userID}"><xsl:value-of select="@username"/></a>,
+ 	<a href="?profile={$userID}"><xsl:value-of select="@username"/></a>
+ 	<xsl:if test="not(position() = last())">, </xsl:if>
  </xsl:template>
 
  <xsl:template match="hashtags/hashtag">

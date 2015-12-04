@@ -1,4 +1,6 @@
-<!ELEMENT blogposts (currentUser?, post*)>
+<!ELEMENT blogposts (search?, currentUser?, post*)>
+
+<!ELEMENT search (#PCDATA)>
 
 <!ELEMENT currentUser EMPTY>
 <!ATTLIST currentUser id (#PCDATA) #REQUIRED>
