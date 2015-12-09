@@ -1,4 +1,9 @@
-<!ELEMENT blogposts (search?, currentUser?, post*)>
+<!ENTITY Ouml ”Ö”>
+<!ENTITY ouml ”ö”>
+
+<!ELEMENT blogposts (message?, search?, currentUser?, post*)>
+
+<!ELEMENT message (#PCDATA)>
 
 <!ELEMENT search (#PCDATA)>
 

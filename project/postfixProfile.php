@@ -22,11 +22,12 @@
 	{
 		// if not a mobile phone, use a html stylesheet
 		header("Content-type:text/html;charset=utf-8");
-		$xsl->load('index-page.xsl');
+		$xsl->load('profile.xsl');
 	}
 	
 	// Make the transformation and print the result
 	$proc = new XSLTProcessor;
 	$proc->importStyleSheet($xsl); // attach the xsl rules
-	echo ($proc->transformToXML($xml)); // om å,ä,ö inte funkar, testa lägg till/ta bort utf8_decode efter echo
+	echo ($proc->transformToXML($xml));
 	?>
+

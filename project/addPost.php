@@ -14,8 +14,8 @@
 	$query = "INSERT INTO posts (title, text, userid) 
 	VALUES ('$_POST[postTitle]', '$theText', '$user');";
 
-	if (!mysql_query($query)) {
-    	echo mysql_error();
+	if (!mysqli_query($con,$query)) {
+    	echo mysqli_error();
     }
 
 	// take the hashtags..
@@ -26,13 +26,13 @@
 		foreach($arrayHashtags as $tag){
 		    //echo $tag.'<br>';  
 		    $query_tag = "INSERT INTO hashtags (postid, name) VALUES (LAST_INSERT_ID(), '$tag');";
-		    if (!mysql_query($query_tag)) {
-	    		echo mysql_error();
+		    if (!mysqli_query($con,$query_tag)) {
+	    		echo mysqli_error();
 	    	}
 		}
 	}
 
-    mysql_close();
+    mysqli_close($con);
 
 	header("Location: index.php");
 ?>

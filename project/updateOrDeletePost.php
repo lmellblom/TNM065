@@ -16,48 +16,46 @@
 		$query2 = "DELETE from hashtags WHERE postid = $postID;";
 
 		// vet inte varför, men gick inte att skicka alla på samma gång.. :/ 
-		if(!mysql_query($query)) {
-			echo mysql_error();
+		if(!mysqli_query($con,$query)) {
+			echo mysqli_error();
 		}
-		if(!mysql_query($query1)) {
-			echo mysql_error();
+		if(!mysqli_query($con,$query1)) {
+			echo mysqli_error();
 		}
-		if(!mysql_query($query2)) {
-			echo mysql_error();
+		if(!mysqli_query($con,$query2)) {
+			echo mysqli_error();
 		}
 	} else { // should update the form instead.. 
 		$postID = $_GET[postID];
 
 		$query = "UPDATE posts SET title='$_POST[postTitle]', text='$_POST[postText]' WHERE id = $postID";
-		if (!mysql_query($query)) {
-	    	echo mysql_error();
+		if (!mysqli_query($con,$query)) {
+	    	echo mysqli_error();
 	    }
 
 	    // delete all the hashtags
 	    $deleteHashtagsquery = "DELETE FROM hashtags WHERE postid = $postID;";
-	    if(!mysql_query($deleteHashtagsquery)) {
-			echo mysql_error();
+	    if(!mysqli_query($con,$deleteHashtagsquery)) {
+			echo mysqli_error();
 		}
 
 		// updatera hashtagsen, gör så att jag deletar alla som finns i databasen tillhörande postID och sen lägger till igen på samma sätt som i add post
-
-		// TODO: kan råka lägga till mellanslag som hashtags.. inte så bra!
-
 		$hashtags = $_POST[postHashtags];
-		// gör inte detta ifall det är tomt!! funkar det??
+		// do not do this if the hashtag is empty
 		if ($hashtags != "") {
 			$arrayHashtags = explode(' ', $hashtags);
 			foreach($arrayHashtags as $tag){
-			    //echo $tag.'<br>';  
-			    $query_tag = "INSERT INTO hashtags (postid, name) VALUES ($postID, '$tag');";
-			    if (!mysql_query($query_tag)) {
-		    		echo mysql_error();
+			    if ($tag != ""){ // do not add a empty hashtag.
+				    $query_tag = "INSERT INTO hashtags (postid, name) VALUES ($postID, '$tag');";
+				    if (!mysqli_query($con,$query_tag)) {
+			    		echo mysqli_error();
+			    	}
 		    	}
 			}
 		}
 	}
 
-    mysql_close();
+    mysqli_close($con);
 
 	header("Location: index.php");
 ?>

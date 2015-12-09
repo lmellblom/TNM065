@@ -1,5 +1,64 @@
+/* for the selection of profile pics */
+.cc-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+
+.profile1{background-image:url('img/user/1.jpg');}
+.profile2{background-image:url('img/user/2.jpg');}
+.profile3{background-image:url('img/user/3.jpg');}
+.profile4{background-image:url('img/user/4.jpg');}
+.profile5{background-image:url('img/user/5.jpg');}
+
+
+.cc-selector input:active +.drinkcard-cc{opacity: .9;}
+.cc-selector input:checked +.drinkcard-cc{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+
+.cc-selector {
+	display:inline-block;
+}
+
+.drinkcard-cc{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:70px;height:70px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard-cc:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+/* --------------------- */
+
 .hashtags small{
 	margin: 0 5px 0 5px;
+}
+
+.alignCenter {
+	text-align: center;
+}
+
+.alignCenter img {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.alignCenter img {
+	padding-top: 5px;
 }
 
 .userImage {
@@ -15,8 +74,29 @@
 	border-top: 1px solid gray;
 }
 
-.fa-heart:hover {
+.posts{
+	/*min-height: 150px;*/
+	/*margin-bottom: 20px !important;*/
+}
+
+#footer {
+	min-height: 120px;
+	margin-bottom: 0px;
+	margin-top: 40px;
+}
+
+.likeNotLoggedIn, .unliked {
+	opacity: 0.2;
+	filter: alpha(opacity=0.2);
+}
+
+.unliked:hover {
+	opacity: 1.0;
+	filter: alpha(opacity=1.0);
 	color: red;
+}
+.fa-times, .fa-pencil {
+	cursor: pointer;
 }
 
 .likedPost {
@@ -46,6 +126,7 @@ a .fa-heart {
 }
 
 .userInfo {
-	margin-top: auto;
-	margin-bottom: auto;
+	margin-top: 10px;
+	/*margin-top: auto;
+	margin-bottom: auto;*/
 }

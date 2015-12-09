@@ -15,12 +15,12 @@
 	    	WHERE postid = $postID AND userid = $userID";
 
 	    // är result tom? isåfall lägg till, annars ta bort
-	    $result = mysql_query($query);
-		if(!mysql_query($query)) {
-			echo mysql_error();
+	    $result = mysqli_query($con,$query);
+		if(!mysqli_query($con,$query)) {
+			echo mysqli_error();
 		}
 
-		if (mysql_num_rows($result) == 0) {
+		if (mysqli_num_rows($result) == 0) {
 			// add the like
 			$query2 = "INSERT INTO likes (postid, userid)
 				VALUES ($postID, $userID)"; 
@@ -30,11 +30,11 @@
 		}
 
 		// add or delete like.. 
-		if(!mysql_query($query2)) {
-			echo mysql_error();
+		if(!mysqli_query($con,$query2)) {
+			echo mysqli_error();
 		}
 
-	    mysql_close();
+	    mysqli_close($con);
 	}
 
 	header("Location: index.php");

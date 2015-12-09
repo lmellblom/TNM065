@@ -14,35 +14,25 @@
     
     $returnstring = "";
 
-    // ändra query-frågan beroende på om man vill se en specifik profil eller alla
-    // kanske ta bort detta sen...
-    if(isset($_GET['profile'])) {
-        // koll på om det är ett id?
-        $profileID = $_GET['profile']; 
-        $query = "SELECT user.name, user.id as 'userid', user.picture,  posts.title, posts.text, posts.date, posts.id
+    // kan bara visa user om vi har specifierat ett id.. 
+    if(isset($_GET['id'])) {
+        $profileID = $_GET['id']; 
+
+        $query = "SELECT * FROM user WHERE id = '$profileID'";
+        $result = mysqli_query($con,$query);
+        $user = mysqli_fetch_assoc($result);
+        $username = $user['name'];
+        $userpic = $user['picture'];
+
+        $returnstring = $returnstring . "<profile picid='$userpic' id='$profileID' name='$username' />"; // gör mer här! kanske ha mer info angående usern??
+        // set right user pic
+
+        // hämta post som tillhör usern..
+        $query = "SELECT user.name, user.id as 'userid',user.picture, posts.title, posts.text, posts.date, posts.id
             FROM posts
             INNER JOIN user on posts.userid = user.id
             WHERE user.id = $profileID
             ORDER BY posts.date DESC, user.name DESC";
-    } else if(isset($_GET['search']) && $_GET['search'] != "") {
-        $hashtag = $_GET['search']; 
-        $query = $test="SELECT user.name, user.id as 'userid',user.picture,  posts.title, posts.text, posts.date, posts.id
-            FROM posts
-            INNER JOIN user on posts.userid = user.id
-            JOIN hashtags on posts.id = hashtags.postid
-            WHERE hashtags.name LIKE '%$hashtag%' 
-            ORDER BY posts.date DESC, user.name DESC";
-
-        $returnstring = $returnstring . "<search>$hashtag</search>";
-
-    } else {
-        // en sql-fråga som väljer ut alla rader sorterade fallande på år och vecka
-        $query = "SELECT user.name, user.id as 'userid',user.picture, posts.title, posts.text, posts.date, posts.id
-            FROM posts
-            INNER JOIN user on posts.userid = user.id
-            ORDER BY posts.date DESC, user.name DESC";
-    }
-
 
     // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
     $result = mysqli_query($con,$query)
@@ -54,21 +44,9 @@
             $userID = $_SESSION['userid'];
             $username = $_SESSION['username'];
             $authority = $_SESSION['authority'];
+            //$returnstring = $returnstring . "<user>$username</user>";
             $returnstring = $returnstring . "<currentUser id='$userID' name='$username' authority='$authority' />";
         }
-    }
-
-    if(isset($_GET['loginError'])) {
-        $errorMessage = $_GET['loginError'];
-        $errorString = "fail";
-        if ($errorMessage == 'noMatch'){
-            $errorString =  "Inlogg misslyckades.";
-        } else if ($errorMessage == 'username'){
-            $errorString = "Användarnamnet finns redan registrerat.";
-        } else if ($errorMessage == 'password'){
-            $errorString = "Lösenordena matchade inte varandra.";
-        }
-        $returnstring = $returnstring . "<errormessage>$errorString</errormessage>";
     }
         
     // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
@@ -82,16 +60,8 @@
         $date = $line->date;
         $picid = $line->picture;
 
-
         $date = strtotime($date);
-        // skriva ut timmen? kanske göra check och bara skriva ut om det är samma dag
-        $currentYear = date('Y');
-        $postYear =  date('Y', $date);
-        if ($currentYear == $postYear) { // only write the year if it is not the same year
-            $date = date('d M.', $date);
-        } else {
-            $date = date('d M.Y', $date);
-        }
+        $date = date('Y.m.d H:i',$date);//date('c', $date);
 
         // bygg upp en sträng innehållande det resultat vi vill ha
         // slå ihop två strängar med ".".blogposts
@@ -100,7 +70,6 @@
         $returnstring = $returnstring . "<text>$text</text>";
         $returnstring = $returnstring . "<author picid='$picid' id='$userid'>$author</author>"; 
         $returnstring = $returnstring . "<publish_date>$date</publish_date>";
-
 
         // get the hashtags
         $query_hashtags = "SELECT hashtags.name
@@ -142,15 +111,17 @@
         $returnstring = $returnstring . "</post>";
 
     }
+    }
     
-    // koda för säkerhets skull om till utf-8 innan resultatet skrivs ut.
-    // print utf8_encode($returnstring); // ha kvar ifall att. gjorde på annorlunda sätt med utf8 på connection till databasen.
-    // får se om det funkar.
+    // koda för säkerhets skull om till utf-8 innan resultatet
+    // skrivs ut. utf8_encode
     print ($returnstring); 
+
+    
 
     mysqli_close($con);
     ?>
 
     </blogposts>
 
-<?php include 'postfix.php';?>
+<?php include 'postfixProfile.php';?>
