@@ -16,7 +16,7 @@
 			    <input type="text" class="form-control" name="postHashtags" value="{hashtags}" />
 			</div>
 			<button type="submit" class="btn btn-default">Update</button>
-			<a href="index.php" class="btn btn-default">Cancel</a> <!-- kanske göra något annat här, inte så bra lösning.  -->
+			<a href="" class="btn btn-default">Cancel</a> <!-- kanske göra något annat här, inte så bra lösning.  -->
 		</form>
    </xsl:template>
 

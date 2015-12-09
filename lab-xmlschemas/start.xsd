@@ -1,0 +1,14 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:catalog="http://www.student.itn.liu.se/~ditt-användarnamn/TNM065/lab-xmlschemas/"
+  elementFormDefault="qualified"
+  targetNamespace="http://www.student.itn.liu.se/~ditt-användarnamn/TNM065/lab-xmlschemas/">
+
+  <element name="catalog"           type="catalog:catalogType"/>
+  <element name="title"             type="string"/>
+
+  <complexType name="catalogType">
+    <sequence>
+      <element ref="catalog:title"/>
+    </sequence>
+  </complexType>
+</schema>
