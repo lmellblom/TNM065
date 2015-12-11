@@ -6,11 +6,11 @@
             appearance:none;
 }
 
-.profile1{background-image:url('img/user/1.jpg');}
-.profile2{background-image:url('img/user/2.jpg');}
-.profile3{background-image:url('img/user/3.jpg');}
-.profile4{background-image:url('img/user/4.jpg');}
-.profile5{background-image:url('img/user/5.jpg');}
+.profile1{background-image:url('../img/user/1.jpg');}
+.profile2{background-image:url('../img/user/2.jpg');}
+.profile3{background-image:url('../img/user/3.jpg');}
+.profile4{background-image:url('../img/user/4.jpg');}
+.profile5{background-image:url('../img/user/5.jpg');}
 
 
 .cc-selector input:active +.drinkcard-cc{opacity: .9;}
@@ -118,7 +118,7 @@ a .fa-heart {
 }
 
 .jumbotron {
-	background-image: url("img/symphony.png");
+	background-image: url("../img/symphony.png");
 }
 
 .jumbotron a {

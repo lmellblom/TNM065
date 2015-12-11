@@ -3,14 +3,14 @@
     if (!isset($_SESSION['isLoggedIn'])) {
         session_start();
     }
-    include 'prefix.php';
+    include '../prefix.php';
 ?>
 
 <blogposts>
 
  <?php  
 
-    include 'db_connect.php';
+    include '../query/db_connect.php';
     
     $returnstring = "";
 

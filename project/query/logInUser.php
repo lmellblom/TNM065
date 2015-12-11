@@ -49,12 +49,12 @@
 		$_SESSION['isLoggedIn'] = false;
 		
 		mysqli_close($con);
-		header("Location: index.php?loginError=noMatch");
+		header("Location: ../index.php?loginError=noMatch");
 		exit();
 	}
 
     mysqli_close($con);
 
-	header("Location: index.php");
+	header("Location: ../index.php");
 	//exit();
 ?>

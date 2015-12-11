@@ -33,7 +33,7 @@
 		$_SESSION['isLoggedIn'] = false;
 
 		mysqli_close($con);
-		header("Location: index.php?loginError=username");
+		header("Location: ../index.php?loginError=username");
 		exit();
 	}
 
@@ -41,7 +41,7 @@
 	if($pwd != $pwd2) {
 		$_SESSION['isLoggedIn'] = false;
 		mysqli_close($con);
-		header("Location: index.php?loginError=password");
+		header("Location: ../index.php?loginError=password");
 		exit();
 	}
 
@@ -64,5 +64,5 @@
 
     mysqli_close($con);
 
-	header("Location: index.php");
+	header("Location: ../index.php");
 ?>

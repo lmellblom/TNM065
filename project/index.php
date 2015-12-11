@@ -10,7 +10,7 @@
 
  <?php  
 
-    include 'db_connect.php';
+    include 'query/db_connect.php';
     
     $returnstring = "";
 

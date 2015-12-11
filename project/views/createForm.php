@@ -1,6 +1,6 @@
 <?php
 	// the form to be created in xml
-	include "prefix.php";	
+	include "../prefix.php";	
 	
 	$con=mysqli_connect("localhost:8889", "root", "root");
 	mysqli_select_db($con,"blogposts");

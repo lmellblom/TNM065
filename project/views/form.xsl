@@ -5,7 +5,7 @@
    xmlns:php="http://php.net/xsl">
 
    <xsl:template match="form">
-		<form class="postForm" action="updateOrDeletePost.php?postID={postID}" method="POST">
+		<form class="postForm" action="../query/updateOrDeletePost.php?postID={postID}" method="POST">
 			<div class="form-group">
 			    <input type="text" class="form-control" name="postTitle" value="{title}" required="true" />
 			</div>

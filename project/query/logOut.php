@@ -11,6 +11,6 @@
 	$_SESSION['userid'] = "";
 	$_SESSION['authority'] = "";
 
-    header("Location: index.php");
+    header("Location: ../index.php");
 	exit();
 ?>
