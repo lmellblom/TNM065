@@ -57,19 +57,6 @@
             $returnstring = $returnstring . "<currentUser id='$userID' name='$username' authority='$authority' />";
         }
     }
-
-    if(isset($_GET['loginError'])) {
-        $errorMessage = $_GET['loginError'];
-        $errorString = "fail";
-        if ($errorMessage == 'noMatch'){
-            $errorString =  "Inlogg misslyckades.";
-        } else if ($errorMessage == 'username'){
-            $errorString = "Användarnamnet finns redan registrerat.";
-        } else if ($errorMessage == 'password'){
-            $errorString = "Lösenordena matchade inte varandra.";
-        }
-        $returnstring = $returnstring . "<errormessage>$errorString</errormessage>";
-    }
         
     // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
     while ($line = mysqli_fetch_object($result)) {

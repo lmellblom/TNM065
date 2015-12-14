@@ -12,7 +12,6 @@
 </head>
 
 <body>
-	
 	<div class="jumbotron">
 		<div class="container">
 			<a href="/"><h1>Moments</h1></a>
@@ -22,8 +21,28 @@
 	<div class="container row allPosts"> <!-- wrapper -->
 
 
-		<h2 class="text-center">Logga in eller registrera dig och skriv magiska meningar!</h2>
-		<div class="col-sm-6">
+	<h2 class="text-center">Logga in eller registrera dig och skriv magiska meningar!</h2>
+	<!-- felmeddelande om inlogget blivit knasigt -->
+		<?php 
+		    if(isset($_GET['loginError'])) {
+		        $errorMessage = $_GET['loginError'];
+		        $errorString = "fail";
+		        if ($errorMessage == 'noMatch'){
+		            $errorString =  "Inlogg misslyckades.";
+		        } else if ($errorMessage == 'username'){
+		            $errorString = "Användarnamnet finns redan registrerat.";
+		        } else if ($errorMessage == 'password'){
+		            $errorString = "Lösenordena matchade inte varandra.";
+		        }
+		       	echo '
+				<div class="alert alert-danger">
+					 ' . $errorString . '
+				</div>'; 
+	    	}
+
+		?>
+
+	<div class="col-sm-6">
 			<div class="inputlogin pull-right"> 
 			<h4>Logga in</h4>
 			<form class="form-horizontal" name="signIn" action="query/logInUser.php" role="form" method="POST">

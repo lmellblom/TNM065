@@ -42,7 +42,12 @@
        -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
             filter: brightness(1.2) grayscale(.5) opacity(.9);
 }
-/* --------------------- */
+/* --------------------------------------------------------------- */
+
+body {
+	/*font-size: 32px;*/
+}
+
 
 .hashtags small{
 	margin: 0 5px 0 5px;
@@ -65,6 +70,15 @@
 	width: 80px;
 }
 
+.profileInfo {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.profileInfo img {
+	text-align: center;
+}
+
 .well {
 	margin:2px;
 	background-color: white !important;
@@ -74,10 +88,23 @@
 	border-top: 1px solid gray;
 }
 
-.posts{
+.adminuser{
+	width: 80%;
+}
+
+.singlePost {
+	width: 70%;
+}
+
+.posts, .postsMobile{
 	/*min-height: 150px;*/
 	/*margin-bottom: 20px !important;*/
 }
+
+.postsMobile {
+	padding: 0px;
+}
+
 
 #footer {
 	min-height: 120px;

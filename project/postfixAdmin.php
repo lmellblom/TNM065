@@ -14,20 +14,19 @@
 	$UA = getenv('HTTP_USER_AGENT');
 	if (preg_match("/iPhone/", $UA) | preg_match("/Android/", $UA) | preg_match("/Symbian/", $UA) | preg_match("/Opera/", $UA) | preg_match("/Motorola/", $UA) | preg_match("/Nokia/", $UA) | preg_match("/Siemens/", $UA) | preg_match("/Samsung/", $UA) | preg_match("/Ericsson/", $UA) | preg_match("/LG/", $UA) | preg_match("/NEC/", $UA) |preg_match("/SEC/", $UA) |preg_match("/MIDP/", $UA) | preg_match("/Windows CE/", $UA)) 
 	{
-		// if a mobile phone,
+		// use the same xsl, not so much on this page so ok for now
 		header("Content-type:text/html;charset=utf-8");
-		$xsl->load('mobile/profile.xsl');
+		$xsl->load('admin.xsl');
 	} 
 	else 
 	{
 		// if not a mobile phone, use a html stylesheet
 		header("Content-type:text/html;charset=utf-8");
-		$xsl->load('desktop/profile.xsl');
+		$xsl->load('admin.xsl');
 	}
 	
 	// Make the transformation and print the result
 	$proc = new XSLTProcessor;
 	$proc->importStyleSheet($xsl); // attach the xsl rules
-	echo ($proc->transformToXML($xml));
+	echo ($proc->transformToXML($xml)); // om å,ä,ö inte funkar, testa lägg till/ta bort utf8_decode efter echo
 	?>
-

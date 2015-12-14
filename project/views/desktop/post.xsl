@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE blogposts SYSTEM "blogposts.dtd">
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="1.0">
@@ -11,12 +10,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
 
-	<link rel="stylesheet" href="css/style.css" />
-
+	<link rel="stylesheet" href="../css/style.css" />
+	
+	<title>TNM065 | moments</title>
 	<script>
 		function showForm(elementID, postID){
 			// uses ajax to genereate the edit form for a post inline.
@@ -29,24 +29,18 @@
 	                }
 	            }
 	        };
-	        xmlhttp.open("GET", "views/createForm.php?postID=" + postID);
+	        xmlhttp.open("GET", "/views/createForm.php?postID=" + postID);
 	        xmlhttp.send();
 		};
 	</script>
-	
-	<title>TNM065 | moments</title>
 </head>
 
 <body>
 	
 	<div class="jumbotron">
 		<div class="container">
-		<div class="row">
-			<div class="col-xs-6">
 			<a href="/"><h1>Moments</h1></a>
-			</div>
 
-			<div class="col-xs-6">
 			<xsl:if test="currentUser">
 				<div class="pull-right">
 				<form class="form-inline" role="form" action="/query/logOut.php" method="POST">
@@ -58,37 +52,13 @@
 			<xsl:if test="not(currentUser)">
 				<div class="pull-right">
 				<a class="btn btn-default" href="/login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
-				</div>
-			</xsl:if>
 			</div>
-		</div></div>
+			</xsl:if>
+		</div>
 	</div>
 
-	<div class="container row allPosts"> <!-- wrapper -->
-
-	<div class="container col-sm-8 posts">
-
-		<!-- search, flytta denna senare.. -->
-		<form class="form-inline" role="form" action="query/searchHashtags.php" method="POST">
-		<div class="input-group">
-		      <input type="search" class="form-control" name="search" placeholder="Search for hashtags.." />
-		      <span class="input-group-btn">
-		        <button type="submit" class="btn btn-default">Go!</button>
-		      </span>
-	    </div><!-- /input-group -->
-	    </form>
-
-
-		<h3>Feed</h3>
-		<div id="showPosts">
-			<!--<xsl:apply-templates select="post[author[@id=1]]" />-->
-			<!--<xsl:apply-templates select="post[hashtags[hashtag[contains(text(), 'ta')]]]" />, väljer ut hashtags. -->
-			<!--<xsl:apply-templates select="post[hashtags[hashtag[contains(text(), '')]]]" />-->
-			<!-- check if post is empty, then write a text message instead -->
-			<xsl:if test="search">
-				<h4>Du sökte på <xsl:value-of select="search"/></h4>
-			</xsl:if>
-
+	<div class="container"> <!-- wrapper -->
+		<div class="singlePost center-block">
 			<xsl:choose>
 				<xsl:when test="count(post)=0">
 					<p>Här var det tomt..</p>
@@ -98,60 +68,9 @@
 				</xsl:otherwise>
 			</xsl:choose>			
 		</div>
-
-	</div>
-
-	<div class="container rightContainer col-sm-4">
-		<!-- When the user is logged in, should be able to adding a post -->
-		<xsl:choose>
-		<xsl:when test="currentUser">
-
-		<div class="inputForm infoCard">
-			<h3>Lägg till en tanke</h3>
-			<!--<span id="validateMessage"></span>-->
-			<form class="form-horizontal" name="postForm" role="form" action="query/addPost.php" method="POST">
-			  <div class="form-group">
-			    <input type="text" class="form-control" name="postTitle" placeholder="Title" required="true" />
-			  </div>
-			  <div class="form-group">
-			    <input type="text" class="form-control" name="postText" placeholder="What are you thinking about?" required="true" />
-			  </div>
-			  <div class="form-group">
-			    <input type="text" class="form-control" name="postHashtags" placeholder="Hashtags, separate by spacing" />
-			  </div>
-			  <button type="submit" class="btn btn-default">Post</button>
-			</form>
-		</div>
-		</xsl:when>
-		<xsl:otherwise>
-			<p>Logga in eller registrera dig och skriv magiska meningar!</p>
-		</xsl:otherwise>
-		</xsl:choose>
-
-		<!-- show all hashtags that are here. blir lite fel om man söker på user, får bara dess hahstags osv... -->
-		<xsl:if test="not(search)">
-		<div class="infoCard">
-			<h4>Alla hashtags</h4>
-			<!-- show all the hashtags that are in the blog and also how often they have occured -->
-     		<xsl:for-each select="post/hashtags/hashtag">
-     			<xsl:sort select="count(//hashtag[text()=current()/text()])" order='descending'/>
-		        <xsl:if test="not(preceding::hashtag[text() = current()/text()])">
-		        	<xsl:variable name="search" select="."/>
-		            <small><span class="fa fa-hashtag"></span> <a href="index.php?search={$search}"><xsl:value-of select="."/></a> (<xsl:value-of select="count(//hashtag[text()=current()/text()])"/>)</small>
-		        </xsl:if>
-		    </xsl:for-each>
-		</div>
-		</xsl:if>
-
-		<div class="infoCard">
-			<h4><span class="fa fa-rss"></span> <a href="rss.php">Rss <small>link</small></a></h4>
-		</div>
-
-	</div><!-- end right column -->
-
 	</div><!-- end wrapper -->
 
-<!-- footer -->
+	<!-- footer -->
 	<div class="jumbotron" id="footer">
 	</div>
 
@@ -159,17 +78,7 @@
 </html>
 </xsl:template> 
 
-<xsl:template match="currentUser">
-	<!--ID: <xsl:value-of select="@id"/>, 
-	Namn: <xsl:value-of select="@name"/>, 
-	Admin? : <xsl:value-of select="@authority"/>-->
-	<p> Inloggad som <xsl:value-of select="@name"/></p>
-	<xsl:if test="@authority = 0">
-		<small><i><a href="../admin.php">adminsida</a></i></small>
-	</xsl:if>
-</xsl:template>
-
- <xsl:template match="post">
+<xsl:template match="post">
  	<div class="well well-sm" id="{generate-id(.)}">
 
 	<div class="row posts">
@@ -179,7 +88,7 @@
 				<a href="views/profile.php?id={$profileID}"> <xsl:value-of select="author"/></a>
 			</p>
 			<xsl:variable name="picID" select="author/@picid"/>
-			<img class="img-responsive userImage img-circle" src="img/user/{$picID}.jpg" alt="user" />
+			<img class="img-responsive userImage img-circle" src="../img/user/{$picID}.jpg" alt="user" />
 		</div>
 
 		<div class="col-xs-10">
@@ -199,7 +108,7 @@
 		 	<xsl:if test="author/@id = ../currentUser/@id or ../currentUser/@authority = 0">
 		 		<p class="pull-right">
 		 			<a onclick="showForm('{generate-id(.)}', '{$post_id}')"><span class="fa fa-pencil"></span> edit </a>
-		 			<a href="query/updateOrDeletePost.php?delete={$post_id}"><span class="fa fa-times"></span> delete </a>
+		 			<a href="../query/updateOrDeletePost.php?delete={$post_id}"><span class="fa fa-times"></span> delete </a>
 		 		</p>
 		 	</xsl:if>
 	 	</div>
@@ -222,7 +131,7 @@
 				<xsl:choose>
 					<xsl:when test="../currentUser">
 						<!-- check if you have liked the post? .likedPost -->
-				 		<a href="query/likePost.php?postID={$post_id}">
+				 		<a href="../query/likePost.php?postID={$post_id}">
 				 			<span type="submit" class="unliked like fa-2x fa fa-heart">
 				 			<!-- if the logged in user has liked a post, make the heart red instead -->
 				 			<xsl:if test="likes/like[@userid = ../../../currentUser/@id]">
@@ -258,10 +167,9 @@
  	</div>
 
  </xsl:template>
-
  <xsl:template match="likes/like">
  	<xsl:variable name="userID" select="@userid"/>
- 	<a href="views/profile.php?id={$userID}">
+ 	<a href="profile.php?id={$userID}">
  		<!-- if the current user that is logged in has liked a post, replace the username with "du" -->
  		<xsl:choose>
  			<xsl:when test="@userid = ../../../currentUser/@id">
@@ -281,10 +189,20 @@
  	<xsl:variable name="search" select="."/> 
  	<small>
  		<span class="fa fa-hashtag"></span>
-	 	<a href="index.php?search={$search}">
+	 	<a href="../index.php?search={$search}">
 	 		<xsl:value-of select="."/>
 	 	</a>
  	</small>
  </xsl:template>
+
+ <xsl:template match="currentUser">
+	<!--ID: <xsl:value-of select="@id"/>, 
+	Namn: <xsl:value-of select="@name"/>, 
+	Admin? : <xsl:value-of select="@authority"/>-->
+	<p> Inloggad som <xsl:value-of select="@name"/></p>
+	<xsl:if test="@authority = 0">
+		<small><i><a href="../admin.php">adminsida</a></i></small>
+	</xsl:if>
+</xsl:template>
 
 </xsl:stylesheet>

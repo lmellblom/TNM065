@@ -6,7 +6,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel rdf:about="http://www.itn.liu.se/">
         <title>Moments</title>
         <link>http://localhost:8888</link>
-        <description>Miniblogg.</description>
+        <description>En mikroblogg med ögonblick som fångar dig.</description>
         <dc:language>en</dc:language>
         
  <?php  
@@ -45,8 +45,8 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
         $date = $line->date;
         
         // ser till att formateringen blir okej
+        // inte bästa länken men för nu.
         $link = "http://localhost:8888/views/post.php?id=$postID";
-        // funkar inte med å,ä,ö
 
         // convert the date to a timestamp and then to the right format
         $date = strtotime($date);
@@ -73,11 +73,10 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
     // adding the strings togehter
     $return = $stringLinks . $returnstring; 
 
-    mysqli_close($con);
+    mysqli_close($con); // stäng connection
     
-    // koda för säkerhets skull om till utf-8 innan resultatet
-    // skrivs ut.
-    print utf8_encode($return); 
+    // koda för säkerhets skull om till utf-8 innan resultatet skrivs ut.
+    print ($return);  // utf8_encode, tog bort. databasen har utf-8, blir knas annars.
     ?>
 
 </rdf:RDF>

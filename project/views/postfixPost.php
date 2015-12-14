@@ -12,17 +12,17 @@
 	
 	// See which user agent is connecting
 	$UA = getenv('HTTP_USER_AGENT');
-	if (preg_match("/Symbian/", $UA) | preg_match("/Opera/", $UA) | preg_match("/Nokia/", $UA)) 
+	if (preg_match("/iPhone/", $UA) | preg_match("/Android/", $UA) | preg_match("/Symbian/", $UA) | preg_match("/Opera/", $UA) | preg_match("/Motorola/", $UA) | preg_match("/Nokia/", $UA) | preg_match("/Siemens/", $UA) | preg_match("/Samsung/", $UA) | preg_match("/Ericsson/", $UA) | preg_match("/LG/", $UA) | preg_match("/NEC/", $UA) |preg_match("/SEC/", $UA) |preg_match("/MIDP/", $UA) | preg_match("/Windows CE/", $UA)) 
 	{
-		// if a mobile phone, use a wml stylesheet and set appropriate MIME type
-		header("Content-type:text/vnd.wap.wml");
-		$xsl->load('index-wml.xsl');
+		// if a mobile phone,
+		header("Content-type:text/html;charset=utf-8");
+		$xsl->load('mobile/post.xsl');
 	} 
 	else 
 	{
 		// if not a mobile phone, use a html stylesheet
 		header("Content-type:text/html;charset=utf-8");
-		$xsl->load('post.xsl');
+		$xsl->load('desktop/post.xsl');
 	}
 	
 	// Make the transformation and print the result
