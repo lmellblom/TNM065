@@ -150,12 +150,12 @@
  	<div class="well well-sm" id="{generate-id(.)}">
 
 	<div class="row posts">
-		<div class="col-xs-2 alignCenter">
+		<!--<div class="col-xs-2 alignCenter">
 			<xsl:variable name="picID" select="author/@picid"/>
-			<img class="img-responsive userImage img-circle" src="../img/user/{$picID}.jpg" alt="user" />
-		</div>
+			<img class="img-responsive img-circle" src="../img/user/{$picID}.jpg" alt="user" />
+		</div>-->
 
-		<div class="col-xs-10">
+		<div class="col-xs-12">
 		 	<h4 class="text-uppercase"><xsl:value-of select="title"/> 
 		 		<!-- vilket datum -->
 			 	<small class="text-lowercase">
@@ -178,7 +178,7 @@
 	 	</div>
 	 </div>
 	 <div class="row">
-	 	<div class="col-xs-offset-2 col-xs-10">
+	 	<div class="col-xs-12">
 		 	<!-- show the hashtags -->
 		 	<p>
 		 		<span class="hashtags"><xsl:apply-templates select="hashtags/hashtag" /></span>

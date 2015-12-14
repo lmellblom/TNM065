@@ -28,7 +28,49 @@
 	                }
 	            }
 	        };
-	        xmlhttp.open("GET", "views/createForm.php?postID=" + postID);
+	        xmlhttp.open("GET", "/views/createForm.php?postID=" + postID);
+	        xmlhttp.send();
+		};
+
+		function changePic(userID){
+			// get the value from the form? 
+			var picID = document.querySelector('input[name=profile-pic]:checked').value;
+			// use ajax to update the database!!
+
+			var xmlhttp = new XMLHttpRequest();
+	        xmlhttp.onreadystatechange = function() {
+	            if (xmlhttp.readyState == 4) {
+	            	if(xmlhttp.status == 200){
+	            	console.log(xmlhttp.responseText);
+	            		console.log("changed? " + picID + "=pic, user=" + userID);
+	                	// change the picture
+						document.getElementById('userimage').src = "../img/user/" + picID + ".jpg";
+						// change all the pictures
+						var x = document.getElementsByClassName("userimages");
+						var im;
+						for(im in x) {
+							x[im].src = "../img/user/" + picID + ".jpg";
+						}
+	                }
+	            }
+	        }
+	        xmlhttp.open("GET", "/query/changePic.php?picture=" + picID);
+	        xmlhttp.send();
+		};
+
+		function likeThePost(postID) {
+		console.log("like the post " + postID);
+			var xmlhttp = new XMLHttpRequest();
+	        xmlhttp.onreadystatechange = function() {
+	            if (xmlhttp.readyState == 4) {
+	            	if(xmlhttp.status == 200){
+	                	// change the class of that object that clicked on..
+
+	                	// add the name to the stuff
+	                }
+	            }
+	        };
+	        xmlhttp.open("GET", "/query/likePost.php?postID=" + postID);
 	        xmlhttp.send();
 		};
 	</script>
@@ -87,29 +129,35 @@
 		<!-- visa här mer information om profilen som du tittar på -->
 		<h3 class="text-capitalize"><xsl:value-of select="profile/@name"/></h3>
 		<xsl:variable name="picID" select="profile/@picid"/>
-		<img class="img-responsive userImage img-circle" src="../img/user/{$picID}.jpg" alt="user" />
+		<img id="userimage" class="img-responsive userImage img-circle" src="../img/user/{$picID}.jpg" alt="user" />
 
 		<p>Antal poster: <xsl:value-of select="count(post)" /></p>
 
 		<!-- om du är den som är inloggad ska du kunna välja profilbild typ? -->
 		<xsl:if test="currentUser/@id = profile/@id">
 			<h4>Välj vilken profilbild</h4>
+			<form id="imageChoose">
 			<div class="cc-selector">
-		        <input checked="checked" id="profile1" type="radio" name="credit-card" value="profile1" />
+		        <input checked="checked" id="profile1" type="radio" name="profile-pic" value="1" />
 		        <label class="drinkcard-cc profile1" for="profile1" />
 		    </div>
 		    <div class="cc-selector">
-		        <input id="profile4" type="radio" name="credit-card" value="profile4" />
+		        <input id="profile4" type="radio" name="profile-pic" value="4" />
 		        <label class="drinkcard-cc profile4" for="profile4" />
 		    </div>
 		    <div class="cc-selector">
-		        <input id="profile3" type="radio" name="credit-card" value="profile3" />
+		        <input id="profile3" type="radio" name="profile-pic" value="3" />
 		        <label class="drinkcard-cc profile3" for="profile3" />
 		    </div>
 		     <div class="cc-selector">
-		        <input id="profile5" type="radio" name="credit-card" value="profile5" />
+		        <input id="profile5" type="radio" name="profile-pic" value="5" />
 		        <label class="drinkcard-cc profile5" for="profile5" />
 		    </div>
+			</form>
+			<xsl:variable name="userID" select="currentUser/@id"/>
+			
+			<a class="btn btn-default btn-sm" onclick="changePic({$userID})">Spara val</a>
+
 		</xsl:if>
 
 
@@ -154,7 +202,7 @@
 	<div class="row posts">
 		<div class="col-xs-2 alignCenter">
 			<xsl:variable name="picID" select="author/@picid"/>
-			<img class="img-responsive userImage img-circle" src="../img/user/{$picID}.jpg" alt="user" />
+			<img class="img-responsive userimages img-circle" src="../img/user/{$picID}.jpg" alt="user" />
 		</div>
 
 		<div class="col-xs-10">
@@ -197,7 +245,8 @@
 				<xsl:choose>
 					<xsl:when test="../currentUser">
 						<!-- check if you have liked the post? .likedPost -->
-				 		<a href="../query/likePost.php?postID={$post_id}">
+						<a onclick="likeThePost({$post_id})">
+				 		<!--<a href="../query/likePost.php?postID={$post_id}">-->
 				 			<span type="submit" class="unliked like fa-2x fa fa-heart">
 				 			<!-- if the logged in user has liked a post, make the heart red instead -->
 				 			<xsl:if test="likes/like[@userid = ../../../currentUser/@id]">

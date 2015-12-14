@@ -67,7 +67,7 @@ body {
 }
 
 .userImage {
-	width: 80px;
+	max-width: 100px;
 }
 
 .profileInfo {
@@ -89,7 +89,7 @@ body {
 }
 
 .adminuser{
-	width: 80%;
+
 }
 
 .singlePost {
