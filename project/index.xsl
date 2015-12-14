@@ -40,7 +40,21 @@
 	
 	<div class="jumbotron">
 		<div class="container">
-			<a href="/"><h1>Fnitter</h1></a>
+			<a href="/"><h1>Moments</h1></a>
+
+			<xsl:if test="currentUser">
+				<div class="pull-right">
+				<form class="form-inline" role="form" action="query/logOut.php" method="POST">
+					<p>Inloggad som <xsl:apply-templates select="currentUser" />  </p>
+					<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>
+				</form>
+				</div>
+			</xsl:if>
+			<xsl:if test="not(currentUser)">
+				<div class="pull-right">
+				<a class="btn btn-default" href="/login.html"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
+			</div>
+			</xsl:if>
 		</div>
 	</div>
 
@@ -81,19 +95,12 @@
 
 	</div>
 
-	<div class="container col-sm-4">
+	<div class="container rightContainer col-sm-4">
 		<!-- When the user is logged in, should be able to adding a post -->
 		<xsl:choose>
 		<xsl:when test="currentUser">
-			<div class="userInfo">
-			<p>Inloggad som <xsl:apply-templates select="currentUser" /> </p>
-			
-			<form class="form-horizontal" role="form" action="query/logOut.php" method="POST">
-				<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>
-			</form>
-			</div>
 
-		<div class="inputForm">
+		<div class="inputForm infoCard">
 			<h3>Lägg till en tanke</h3>
 			<!--<span id="validateMessage"></span>-->
 			<form class="form-horizontal" name="postForm" role="form" action="query/addPost.php" method="POST">
@@ -115,15 +122,17 @@
 		<!-- When user not logged in, show to different forms. One for log in and one for add user -->
 		<!-- if the log in process got wrong -->
 		<xsl:if test="errormessage">
-			<div class="alert alert-danger">
+			<div class="alert alert-danger infoCard">
 			  <xsl:value-of select="errormessage"/>
 			</div>
 		</xsl:if>
 
-
+		
 		<p>Logga in eller registrera dig och skriv magiska meningar!</p>
-		<div class="inputForm">
-			<h3>Logga in</h3>
+
+		<!--
+		<div class="inputForm infoCard">
+			<h4>Logga in</h4>
 			<form class="form-horizontal" name="signIn" action="query/logInUser.php" role="form" method="POST">
 				<div class="form-group">
 					<input type="text" class="form-control" name= "usr" placeholder="Username" required="true"/>
@@ -135,8 +144,8 @@
 			</form>
 		</div>
 
-		<div class="inputForm">
-			<h3>Registrera dig!</h3>
+		<div class="inputForm infoCard">
+			<h4>Registrera dig!</h4>
 			<form class="form-horizontal" name="signUp" action="query/addUser.php" role="form" method="POST">
 				<div class="form-group">
 					<input type="text" class="form-control" name= "usr" placeholder="Username" required="true"/>
@@ -149,13 +158,13 @@
 				</div>
 				<button type="submit" class="btn btn-default"><span class="fa fa-user-plus"></span> Skapa inlogg</button>
 			</form>
-		</div>
+		</div>-->
 		</xsl:otherwise>
 		</xsl:choose>
 
 		<!-- show all hashtags that are here. blir lite fel om man söker på user, får bara dess hahstags osv... -->
 		<xsl:if test="not(search)">
-		<div>
+		<div class="infoCard">
 			<h4>Alla hashtags</h4>
 			<!-- show all the hashtags that are in the blog and also how often they have occured -->
      		<xsl:for-each select="post/hashtags/hashtag">
@@ -169,8 +178,8 @@
 		</div>
 		</xsl:if>
 
-		<div>
-			<h4><a href="rss.php">Rss <small>link</small></a></h4>
+		<div class="infoCard">
+			<h4><span class="fa fa-rss"></span> <a href="rss.php">Rss <small>link</small></a></h4>
 		</div>
 
 		<!--<div>

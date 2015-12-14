@@ -45,9 +45,9 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
         $date = $line->date;
         
         // ser till att formateringen blir okej
-        $link = "http://localhost:8888/views/profile.php?id=$userid";
+        $link = "http://localhost:8888/views/post.php?id=$postID";
         // funkar inte med å,ä,ö
-        
+
         // convert the date to a timestamp and then to the right format
         $date = strtotime($date);
         $date = date('c', $date);
@@ -72,6 +72,8 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
     
     // adding the strings togehter
     $return = $stringLinks . $returnstring; 
+
+    mysqli_close($con);
     
     // koda för säkerhets skull om till utf-8 innan resultatet
     // skrivs ut.

@@ -1,0 +1,66 @@
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>TNM065 | moments</title>
+</head>
+
+<body>
+	
+	<div class="jumbotron">
+		<div class="container">
+			<a href="/"><h1>Moments</h1></a>
+		</div>
+	</div>
+
+	<div class="container row allPosts"> <!-- wrapper -->
+
+
+		<h2 class="text-center">Logga in eller registrera dig och skriv magiska meningar!</h2>
+		<div class="col-sm-6">
+			<div class="inputlogin pull-right"> 
+			<h4>Logga in</h4>
+			<form class="form-horizontal" name="signIn" action="query/logInUser.php" role="form" method="POST">
+				<div class="form-group">
+					<input type="text" class="form-control" name= "usr" placeholder="Username" required="true"/>
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" name= "pwd" placeholder="Password" required="true"/>
+				</div>
+				<button type="submit" class="btn btn-default"><span class="fa fa-sign-in"></span> Logga in</button>
+			</form>
+		</div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="inputlogin"> 
+			<h4>Registrera dig!</h4>
+			<form class="form-horizontal" name="signUp" action="query/addUser.php" role="form" method="POST">
+				<div class="form-group">
+					<input type="text" class="form-control" name= "usr" placeholder="Username" required="true"/>
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" name= "pwd" placeholder="Password" required="true"/>
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" name= "pwd2" placeholder="Same password again.." required="true"/>
+				</div>
+				<button type="submit" class="btn btn-default"><span class="fa fa-user-plus"></span> Skapa inlogg</button>
+			</form>
+		</div>
+		</div>
+
+	</div><!-- end right column -->
+
+	<!-- footer -->
+	<div class="jumbotron" id="footer">
+	</div>
+
+</body>
+</html>
