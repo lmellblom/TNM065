@@ -73,12 +73,14 @@
         $date = strtotime($date);
         // skriva ut timmen? kanske göra check och bara skriva ut om det är samma dag
         $currentYear = date('Y');
-        $postYear =  date('Y', $date);
+       /* $postYear =  date('Y', $date);
         if ($currentYear == $postYear) { // only write the year if it is not the same year
             $date = date('d M.', $date);
         } else {
             $date = date('d M.Y', $date);
-        }
+        }*/
+        // use this date instead
+        $date = date('Y.m.d H:i',$date);//date('c', $date);
 
         // bygg upp en sträng innehållande det resultat vi vill ha
         // slå ihop två strängar med ".".blogposts
@@ -140,4 +142,10 @@
 
     </blogposts>
 
-<?php include 'postfix.php';?>
+<?php 
+    if(isset($_GET['encoding']) && $_GET['encoding']=="json"){
+        include 'postfixJSON.php'; // should be outputing the json file instead here. 
+    } else {
+        include 'postfix.php';
+   }
+?>

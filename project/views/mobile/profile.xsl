@@ -32,29 +32,51 @@
 	        xmlhttp.open("GET", "createForm.php?postID=" + postID);
 	        xmlhttp.send();
 		};
+		function changePic(userID){
+			// get the value from the form? 
+			var picID = document.querySelector('input[name=profile-pic]:checked').value;
+			// use ajax to update the database!!
+
+			var xmlhttp = new XMLHttpRequest();
+	        xmlhttp.onreadystatechange = function() {
+	            if (xmlhttp.readyState == 4) {
+	            	if(xmlhttp.status == 200){
+	                	// change the picture
+						document.getElementById('userimage').src = "../img/user/" + picID + ".jpg";
+	                }
+	            }
+	        }
+	        xmlhttp.open("GET", "/query/changePic.php?picture=" + picID);
+	        xmlhttp.send();
+		};
 	</script>
 	<title>TNM065 | moments</title>
 </head>
 
 <body>
 	
-	<div class="jumbotron">
-		<div class="container">
-			<a href="/"><h1>Moments</h1></a>
-
+<div class="jumbotron">
+		<div class="container centerAligned">
+			<div>
+				<p>
+					<a href="/">
+						<img class="logo img-responsive" src="/img/logo.png" alt="logo" /><!--<h1>Moments</h1>-->
+					</a>
+				</p>
+			</div>
+			
+			<div>
 			<xsl:if test="currentUser">
-				<div class="pull-right">
 				<form class="form-inline" role="form" action="/query/logOut.php" method="POST">
-					<xsl:apply-templates select="currentUser" />
+					<xsl:variable name="userID" select="currentUser/@id"/>
+					<a href="views/profile.php?id={$userID}"><xsl:apply-templates select="currentUser" /></a>
 					<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>
 				</form>
-				</div>
 			</xsl:if>
 			<xsl:if test="not(currentUser)">
-				<div class="pull-right">
 				<a class="btn btn-default" href="/login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
-			</div>
 			</xsl:if>
+			</div>
 		</div>
 	</div>
 
@@ -64,29 +86,34 @@
 		<!-- visa här mer information om profilen som du tittar på -->
 		<h3 class="text-capitalize"><xsl:value-of select="profile/@name"/>s feed</h3>
 		<xsl:variable name="picID" select="profile/@picid"/>
-		<img src="../img/user/{$picID}.jpg" alt="user" />
+		<img id="userimage" src="../img/user/{$picID}.jpg" alt="user" />
 
 		<p>Antal poster: <xsl:value-of select="count(post)" /></p>
 
 		<!-- om du är den som är inloggad ska du kunna välja profilbild typ? -->
 		<xsl:if test="currentUser/@id = profile/@id">
 			<h4>Välj vilken profilbild</h4>
+			<form id="imageChoose">
 			<div class="cc-selector">
-		        <input checked="checked" id="profile1" type="radio" name="credit-card" value="profile1" />
+		        <input checked="checked" id="profile1" type="radio" name="profile-pic" value="1" />
 		        <label class="drinkcard-cc profile1" for="profile1" />
 		    </div>
 		    <div class="cc-selector">
-		        <input id="profile4" type="radio" name="credit-card" value="profile4" />
+		        <input id="profile4" type="radio" name="profile-pic" value="4" />
 		        <label class="drinkcard-cc profile4" for="profile4" />
 		    </div>
 		    <div class="cc-selector">
-		        <input id="profile3" type="radio" name="credit-card" value="profile3" />
+		        <input id="profile3" type="radio" name="profile-pic" value="3" />
 		        <label class="drinkcard-cc profile3" for="profile3" />
 		    </div>
 		     <div class="cc-selector">
-		        <input id="profile5" type="radio" name="credit-card" value="profile5" />
+		        <input id="profile5" type="radio" name="profile-pic" value="5" />
 		        <label class="drinkcard-cc profile5" for="profile5" />
 		    </div>
+		    </form>
+			<xsl:variable name="userID" select="currentUser/@id"/>
+			
+			<a class="btn btn-default btn-sm" onclick="changePic({$userID})">Spara val</a>
 		</xsl:if>
 	</div>
 

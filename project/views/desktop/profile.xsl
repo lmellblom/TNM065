@@ -41,8 +41,6 @@
 	        xmlhttp.onreadystatechange = function() {
 	            if (xmlhttp.readyState == 4) {
 	            	if(xmlhttp.status == 200){
-	            	console.log(xmlhttp.responseText);
-	            		console.log("changed? " + picID + "=pic, user=" + userID);
 	                	// change the picture
 						document.getElementById('userimage').src = "../img/user/" + picID + ".jpg";
 						// change all the pictures
@@ -79,15 +77,19 @@
 </head>
 
 <body>
-	
 	<div class="jumbotron">
 		<div class="container">
-			<a href="/"><h1>Moments</h1></a>
+		<div class="row">
+			<div class="col-xs-6">
+			<a href="/"><img class="logo img-responsive" src="/img/logo.png" alt="logo" /><!--<h1>Moments</h1>--></a>
+			</div>
 
+			<div class="col-xs-6">
 			<xsl:if test="currentUser">
 				<div class="pull-right">
 				<form class="form-inline" role="form" action="/query/logOut.php" method="POST">
-					<xsl:apply-templates select="currentUser" />
+					<xsl:variable name="userID" select="currentUser/@id"/>
+					<a href="views/profile.php?id={$userID}"><xsl:apply-templates select="currentUser" /></a>
 					<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>
 				</form>
 				</div>
@@ -95,14 +97,16 @@
 			<xsl:if test="not(currentUser)">
 				<div class="pull-right">
 				<a class="btn btn-default" href="/login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
-			</div>
+				</div>
 			</xsl:if>
+			</div>
+		</div>
 		</div>
 	</div>
 
 	<div class="container row allPosts"> <!-- wrapper -->
 
-	<div class="container col-sm-8 posts">
+	<div class="col-sm-8 posts">
 		<h3><span class="text-capitalize"><xsl:apply-templates select="profile/@name" />s</span> feed</h3>
 		<div id="showPosts">
 			<!--<xsl:apply-templates select="post[author[@id=1]]" />-->
@@ -125,7 +129,7 @@
 
 	</div>
 
-	<div class="container col-sm-4">
+	<div class="col-sm-4">
 		<!-- visa här mer information om profilen som du tittar på -->
 		<h3 class="text-capitalize"><xsl:value-of select="profile/@name"/></h3>
 		<xsl:variable name="picID" select="profile/@picid"/>
@@ -245,8 +249,8 @@
 				<xsl:choose>
 					<xsl:when test="../currentUser">
 						<!-- check if you have liked the post? .likedPost -->
-						<a onclick="likeThePost({$post_id})">
-				 		<!--<a href="../query/likePost.php?postID={$post_id}">-->
+						<!--<a onclick="likeThePost({$post_id})">-->
+				 		<a href="../query/likePost.php?postID={$post_id}">
 				 			<span type="submit" class="unliked like fa-2x fa fa-heart">
 				 			<!-- if the logged in user has liked a post, make the heart red instead -->
 				 			<xsl:if test="likes/like[@userid = ../../../currentUser/@id]">

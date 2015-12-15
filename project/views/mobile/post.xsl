@@ -36,24 +36,28 @@
 </head>
 
 <body>
-	
 	<div class="jumbotron">
-		<div class="container">
-			<a href="/"><h1>Moments</h1></a>
-
+		<div class="container centerAligned">
+			<div>
+				<p>
+					<a href="/">
+						<img class="logo img-responsive" src="/img/logo.png" alt="logo" /><!--<h1>Moments</h1>-->
+					</a>
+				</p>
+			</div>
+			
+			<div>
 			<xsl:if test="currentUser">
-				<div class="pull-right">
 				<form class="form-inline" role="form" action="/query/logOut.php" method="POST">
-					<xsl:apply-templates select="currentUser" />
+					<xsl:variable name="userID" select="currentUser/@id"/>
+					<a href="views/profile.php?id={$userID}"><xsl:apply-templates select="currentUser" /></a>
 					<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>
 				</form>
-				</div>
 			</xsl:if>
 			<xsl:if test="not(currentUser)">
-				<div class="pull-right">
 				<a class="btn btn-default" href="/login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
-			</div>
 			</xsl:if>
+			</div>
 		</div>
 	</div>
 

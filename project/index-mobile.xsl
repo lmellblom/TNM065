@@ -39,34 +39,49 @@
 </head>
 
 <body>
-	
 	<div class="jumbotron">
-		<div class="container">
-			<a href="/"><h1>Moments</h1></a>
+		<div class="container centerAligned">
+			<div>
+				<p>
+					<a href="/">
+						<img class="logo img-responsive" src="img/logo.png" alt="logo" /><!--<h1>Moments</h1>-->
+					</a>
+				</p>
+			</div>
 
+			<div>
 			<xsl:if test="currentUser">
-				<div class="pull-right">
 				<form class="form-inline" role="form" action="/query/logOut.php" method="POST">
-					<xsl:apply-templates select="currentUser" />
+					<xsl:variable name="userID" select="currentUser/@id"/>
+					<a href="views/profile.php?id={$userID}"><xsl:apply-templates select="currentUser" /></a>
 					<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>
 				</form>
-				</div>
 			</xsl:if>
 			<xsl:if test="not(currentUser)">
-				<div class="pull-right">
 				<a class="btn btn-default" href="/login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
-			</div>
 			</xsl:if>
+			</div>
 		</div>
 	</div>
 
 	<div class="container allPosts"> <!-- wrapper -->
 
 	<div>
+		<!-- search, flytta denna senare.. -->
+		<form class="form-inline" role="form" action="query/searchHashtags.php" method="POST">
+		<div class="input-group">
+		      <input type="search" class="form-control" name="search" placeholder="Search for hashtags.." />
+		      <span class="input-group-btn">
+		        <button type="submit" class="btn btn-default">Go!</button>
+		      </span>
+	    </div><!-- /input-group -->
+	    </form>
+	</div>
+
+	<div>
 		<!-- When the user is logged in, should be able to adding a post -->
 		<xsl:choose>
-		<xsl:when test="currentUser">
-
+		<xsl:when test="currentUser and not(search)">
 		<div class="inputForm infoCard">
 			<h3>Lägg till en tanke</h3>
 			<!--<span id="validateMessage"></span>-->
@@ -91,18 +106,6 @@
 	</div>
 
 	<div class="posts">
-
-		<!-- search, flytta denna senare.. -->
-		<form class="form-inline" role="form" action="query/searchHashtags.php" method="POST">
-		<div class="input-group">
-		      <input type="search" class="form-control" name="search" placeholder="Search for hashtags.." />
-		      <span class="input-group-btn">
-		        <button type="submit" class="btn btn-default">Go!</button>
-		      </span>
-	    </div><!-- /input-group -->
-	    </form>
-
-
 		<h3>Feed</h3>
 		<div id="showPosts">
 			<!--<xsl:apply-templates select="post[author[@id=1]]" />-->
@@ -125,9 +128,10 @@
 
 	</div>
 
-	<div>
+	
 		<!-- show all hashtags that are here. blir lite fel om man söker på user, får bara dess hahstags osv... -->
 		<xsl:if test="not(search)">
+			<div>
 			<h4>Alla hashtags</h4>
 			<!-- show all the hashtags that are in the blog and also how often they have occured -->
      		<xsl:for-each select="post/hashtags/hashtag">
@@ -137,10 +141,12 @@
 		            <small><span class="fa fa-hashtag"></span> <a href="index.php?search={$search}"><xsl:value-of select="."/></a> (<xsl:value-of select="count(//hashtag[text()=current()/text()])"/>)</small>
 		        </xsl:if>
 		    </xsl:for-each>
+		    </div><!-- end right column -->
 		</xsl:if>
-	</div><!-- end right column -->
+	
 
 			<h4><span class="fa fa-rss"></span> <a href="rss.php">Rss <small>link</small></a></h4>
+			<h4><span class="fa fa-code"></span> <a href="/?encoding=json">Convert <small>the xml to json</small></a> <small><i>only all posts xml</i></small></h4>
 
 
 	</div><!-- end wrapper -->
@@ -167,18 +173,18 @@
  	<div class="well well-sm" id="{generate-id(.)}">
 
 	<div class="row postsMobile">
-
-
-
-		<div class="col-xs-3 alignCenter">
-			<p class="text-center userInfo text-capitalize">
+		<div class="col-xs-3">
+			<xsl:variable name="picID" select="author/@picid"/>
+			<img class="img-responsive img-circle" src="img/user/{$picID}.jpg" alt="user" />
+		</div>
+		<div class="col-xs-9">
+			<p class="userInfo text-capitalize">
 				<xsl:variable name="profileID" select="author/@id"/>
 				<a href="views/profile.php?id={$profileID}"> <xsl:value-of select="author"/></a>
-			
-			<xsl:variable name="picID" select="author/@picid"/>
-			<img class="img-responsive userImage img-circle" src="img/user/{$picID}.jpg" alt="user" /></p>
+			</p>
 		</div>
-
+	</div>
+	<div class="row postsMobile">
 		<div class="col-xs-12">
 		 	<h4 class="text-uppercase"><xsl:value-of select="title"/> 
 		 		<!-- vilket datum -->
@@ -202,7 +208,7 @@
 	 	</div>
 	 </div>
 	 <div class="row">
-	 	<div class="col-xs-offset-2 col-xs-10">
+	 	<div class="col-xs-12">
 		 	<!-- show the hashtags -->
 		 	<p>
 		 		<span class="hashtags"><xsl:apply-templates select="hashtags/hashtag" /></span>
@@ -234,8 +240,6 @@
 						<span class="likeNotLoggedIn fa-2x fa fa-heart"></span>
 					</xsl:otherwise>
 				</xsl:choose>
-
-		 		
 		 	</p>
 	 	</div>
 	 	<div class="col-xs-10">

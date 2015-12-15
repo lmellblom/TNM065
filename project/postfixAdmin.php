@@ -16,7 +16,7 @@
 	{
 		// use the same xsl, not so much on this page so ok for now
 		header("Content-type:text/html;charset=utf-8");
-		$xsl->load('admin.xsl');
+		$xsl->load('admin-mobile.xsl');
 	} 
 	else 
 	{

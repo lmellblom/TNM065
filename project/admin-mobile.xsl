@@ -22,29 +22,27 @@
 
 <body>
 	<div class="jumbotron">
-		<div class="container">
-		<div class="row">
-			<div class="col-xs-6">
-			<a href="/"><img class="logo img-responsive" src="img/logo.png" alt="logo" /><!--<h1>Moments</h1>--></a>
+		<div class="container centerAligned">
+			<div>
+				<p>
+					<a href="/">
+						<img class="logo img-responsive" src="/img/logo.png" alt="logo" /><!--<h1>Moments</h1>-->
+					</a>
+				</p>
 			</div>
-
-			<div class="col-xs-6">
+			
+			<div>
 			<xsl:if test="currentUser">
-				<div class="pull-right">
 				<form class="form-inline" role="form" action="/query/logOut.php" method="POST">
 					<xsl:variable name="userID" select="currentUser/@id"/>
 					<a href="views/profile.php?id={$userID}"><xsl:apply-templates select="currentUser" /></a>
 					<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>
 				</form>
-				</div>
 			</xsl:if>
 			<xsl:if test="not(currentUser)">
-				<div class="pull-right">
 				<a class="btn btn-default" href="/login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
-				</div>
 			</xsl:if>
 			</div>
-		</div>
 		</div>
 	</div>
 
@@ -60,11 +58,6 @@
 			</div>
 		</xsl:if>
 
-		<div class="row">
-			<p class="col-xs-offset-2 col-xs-3"><b>Användarnamn</b></p>
-			<p class="col-xs-3"><b>Behörighet</b></p>
-			<p class="col-xs-3"><b>Ändra lösen</b></p>
-		</div>
 		<xsl:apply-templates select="user" />
 
 	</div><!-- end wrapper -->
@@ -87,16 +80,18 @@
 <xsl:template match="user">
 	<div class="well well-sm adminuser row">
 		<xsl:variable name="picID" select="picID"/>
-		<img class="userImage col-sm-3 col-xs-4 img-responsive img-circle" src="img/user/{$picID}.jpg" alt="user" />
+		<img class="userImage col-xs-4 img-responsive img-circle" src="img/user/{$picID}.jpg" alt="user" />
 
 		<!-- kan inte ändra admin till vanlig standard om du är inne :P -->
 		<form action="query/adminEdit.php?userid={userid}" method="POST">
 		<!-- show the name -->
-		<p class="col-sm-2 col-xs-4 text-capitalize">
-			 <input type="text" class="form-control" name="userName" value="{name}" required="true" />
+		<div class="col-xs-8">
+		<p class="text-capitalize">
+			Namn: <input type="text" class="form-control" name="userName" value="{name}" required="true" />
 		</p>
 		<!-- show which authority you have -->
-		<p class="col-sm-3 col-xs-4">
+		<p>
+			Behörighet: 
 			<xsl:choose>
 			<xsl:when test="userid != ../currentUser/@id">
 			<select name="auth" class="form-control">
@@ -130,11 +125,12 @@
 			</xsl:choose>
 		</p>
 		<!-- change password -->
-		<p class="col-sm-3 col-xs-4"><input type="password" class="form-control" name= "pwd" placeholder="Password" /></p>
+		<p>Lösen: <input type="password" class="form-control" name= "pwd" placeholder="Password" /></p>
 
 
 		<!-- button that saves, updates -->
-		<p class="col-sm-1 col-xs-1"><button type="submit" class="btn btn-default">Update</button></p>
+		<p><button type="submit" class="btn btn-default">Update</button></p>
+	</div>
 		</form>
 	</div>
 </xsl:template> 

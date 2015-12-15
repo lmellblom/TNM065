@@ -43,14 +43,15 @@
 		<div class="container">
 		<div class="row">
 			<div class="col-xs-6">
-			<a href="/"><h1>Moments</h1></a>
+			<a href="/"><img class="logo img-responsive" src="img/logo.png" alt="logo" /><!--<h1>Moments</h1>--></a>
 			</div>
 
 			<div class="col-xs-6">
 			<xsl:if test="currentUser">
 				<div class="pull-right">
 				<form class="form-inline" role="form" action="/query/logOut.php" method="POST">
-					<xsl:apply-templates select="currentUser" />
+					<xsl:variable name="userID" select="currentUser/@id"/>
+					<a href="views/profile.php?id={$userID}"><xsl:apply-templates select="currentUser" /></a>
 					<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>
 				</form>
 				</div>
@@ -61,12 +62,13 @@
 				</div>
 			</xsl:if>
 			</div>
-		</div></div>
+		</div>
+		</div>
 	</div>
 
 	<div class="container row allPosts"> <!-- wrapper -->
 
-	<div class="container col-sm-8 posts">
+	<div class="col-sm-8 posts">
 
 		<!-- search, flytta denna senare.. -->
 		<form class="form-inline" role="form" action="query/searchHashtags.php" method="POST">
@@ -81,10 +83,6 @@
 
 		<h3>Feed</h3>
 		<div id="showPosts">
-			<!--<xsl:apply-templates select="post[author[@id=1]]" />-->
-			<!--<xsl:apply-templates select="post[hashtags[hashtag[contains(text(), 'ta')]]]" />, väljer ut hashtags. -->
-			<!--<xsl:apply-templates select="post[hashtags[hashtag[contains(text(), '')]]]" />-->
-			<!-- check if post is empty, then write a text message instead -->
 			<xsl:if test="search">
 				<h4>Du sökte på <xsl:value-of select="search"/></h4>
 			</xsl:if>
@@ -101,7 +99,7 @@
 
 	</div>
 
-	<div class="container rightContainer col-sm-4">
+	<div class="rightContainer col-sm-4">
 		<!-- When the user is logged in, should be able to adding a post -->
 		<xsl:choose>
 		<xsl:when test="currentUser">
@@ -145,6 +143,9 @@
 
 		<div class="infoCard">
 			<h4><span class="fa fa-rss"></span> <a href="rss.php">Rss <small>link</small></a></h4>
+		</div>
+		<div class="infoCard">
+			<h4><span class="fa fa-code"></span> <a href="/?encoding=json">Convert <small>the xml to json</small></a> <small><i>only all posts xml</i></small></h4>
 		</div>
 
 	</div><!-- end right column -->
@@ -217,7 +218,6 @@
  	<div class="row">
 	 	<div class="col-xs-2 alignCenter">
 	 		<xsl:variable name="post_id" select="@id"/>
-
 		 	<p>
 				<xsl:choose>
 					<xsl:when test="../currentUser">
@@ -237,8 +237,6 @@
 						<span class="likeNotLoggedIn fa-2x fa fa-heart"></span>
 					</xsl:otherwise>
 				</xsl:choose>
-
-		 		
 		 	</p>
 	 	</div>
 	 	<div class="col-xs-10">

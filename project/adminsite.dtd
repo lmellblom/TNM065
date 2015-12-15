@@ -1,0 +1,9 @@
+<!ELEMENT adminsite (user*, ?errorMessage)>
+
+<!ELEMENT user (name, userid, picID, authority)>
+<!ELEMENT name (#PCDATA) #REQUIRED>
+<!ELEMENT userid (#PCDATA) #REQUIRED>
+<!ELEMENT picID (#PCDATA) #REQUIRED>
+<!ELEMENT authority (#PCDATA) #REQUIRED>
+
+<!ELEMENT errorMessage (#PCDATA)>
