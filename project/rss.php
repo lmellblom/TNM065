@@ -5,7 +5,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <channel rdf:about="http://www.itn.liu.se/">
         <title>Moments</title>
-        <link>http://localhost:8888</link>
+        <link>http://www.student.itn.liu.se/~linme882/TNM065/moments</link>
         <description>En mikroblogg med ögonblick som fångar dig.</description>
         <dc:language>en</dc:language>
         
@@ -46,7 +46,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
         
         // ser till att formateringen blir okej
         // inte bästa länken men för nu.
-        $link = "http://localhost:8888/views/post.php?id=$postID";
+        $link = "http://www.student.itn.liu.se/~linme882/TNM065/moments/views/post.php?id=$postID";
 
         // convert the date to a timestamp and then to the right format
         $date = strtotime($date);

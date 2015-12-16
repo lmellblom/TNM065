@@ -40,22 +40,22 @@
 		<div class="container">
 		<div class="row">
 			<div class="col-xs-6">
-			<a href="/"><img class="logo img-responsive" src="/img/logo.png" alt="logo" /></a>
+			<a href="../index.php"><img class="logo img-responsive" src="../img/logo.png" alt="logo" /></a>
 			</div>
 
 			<div class="col-xs-6">
 			<xsl:if test="currentUser">
 				<div class="pull-right">
-				<form class="form-inline" role="form" action="/query/logOut.php" method="POST">
+				<form class="form-inline" role="form" action="../query/logOut.php" method="POST">
 					<xsl:variable name="userID" select="currentUser/@id"/>
-					<a href="views/profile.php?id={$userID}"><xsl:apply-templates select="currentUser" /></a>
+					<a href="profile.php?id={$userID}"><xsl:apply-templates select="currentUser" /></a>
 					<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>
 				</form>
 				</div>
 			</xsl:if>
 			<xsl:if test="not(currentUser)">
 				<div class="pull-right">
-				<a class="btn btn-default" href="/login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
+				<a class="btn btn-default" href="../login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
 				</div>
 			</xsl:if>
 			</div>
@@ -91,7 +91,7 @@
 		<div class="col-xs-2 alignCenter">
 			<p class="text-center userInfo text-capitalize">
 				<xsl:variable name="profileID" select="author/@id"/>
-				<a href="views/profile.php?id={$profileID}"> <xsl:value-of select="author"/></a>
+				<a href="profile.php?id={$profileID}"> <xsl:value-of select="author"/></a>
 			</p>
 			<xsl:variable name="picID" select="author/@picid"/>
 			<img class="img-responsive userImage img-circle" src="../img/user/{$picID}.jpg" alt="user" />

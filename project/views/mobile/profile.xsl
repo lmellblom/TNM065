@@ -59,22 +59,22 @@
 		<div class="container centerAligned">
 			<div>
 				<p>
-					<a href="/">
-						<img class="logo img-responsive" src="/img/logo.png" alt="logo" />
+					<a href="../index.php">
+						<img class="logo img-responsive" src="../img/logo.png" alt="logo" />
 					</a>
 				</p>
 			</div>
 			
 			<div>
 			<xsl:if test="currentUser">
-				<form class="form-inline" role="form" action="/query/logOut.php" method="POST">
+				<form class="form-inline" role="form" action="../query/logOut.php" method="POST">
 					<xsl:variable name="userID" select="currentUser/@id"/>
-					<a href="views/profile.php?id={$userID}"><xsl:apply-templates select="currentUser" /></a>
+					<a href="profile.php?id={$userID}"><xsl:apply-templates select="currentUser" /></a>
 					<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>
 				</form>
 			</xsl:if>
 			<xsl:if test="not(currentUser)">
-				<a class="btn btn-default" href="/login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
+				<a class="btn btn-default" href="../login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
 			</xsl:if>
 			</div>
 		</div>

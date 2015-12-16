@@ -25,7 +25,7 @@
 		<div class="container">
 		<div class="row">
 			<div class="col-xs-6">
-			<a href="/"><img class="logo img-responsive" src="img/logo.png" alt="logo" /><!--<h1>Moments</h1>--></a>
+			<a href="index.php"><img class="logo img-responsive" src="img/logo.png" alt="logo" /><!--<h1>Moments</h1>--></a>
 			</div>
 
 			<div class="col-xs-6">
@@ -40,7 +40,7 @@
 			</xsl:if>
 			<xsl:if test="not(currentUser)">
 				<div class="pull-right">
-				<a class="btn btn-default" href="/login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
+				<a class="btn btn-default" href="login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
 				</div>
 			</xsl:if>
 			</div>
@@ -80,7 +80,7 @@
 <xsl:template match="currentUser">
 	<p> Inloggad som <xsl:value-of select="@name"/></p>
 	<xsl:if test="@authority = 0">
-		<small><i><a href="../admin.php">adminsida</a></i></small>
+		<small><i><a href="admin.php">adminsida</a></i></small>
 	</xsl:if>
 </xsl:template>
 

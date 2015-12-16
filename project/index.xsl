@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE blogposts SYSTEM "blogposts.dtd">
-
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="1.0">
 	<xsl:output indent="yes" method="xml"/>
@@ -43,13 +42,13 @@
 		<div class="container">
 		<div class="row">
 			<div class="col-xs-6">
-			<a href="/"><img class="logo img-responsive" src="img/logo.png" alt="logo" /><!--<h1>Moments</h1>--></a>
+			<a href="index.php"><img class="logo img-responsive" src="img/logo.png" alt="logo" /><!--<h1>Moments</h1>--></a>
 			</div>
 
 			<div class="col-xs-6">
 			<xsl:if test="currentUser">
 				<div class="pull-right">
-				<form class="form-inline" role="form" action="/query/logOut.php" method="POST">
+				<form class="form-inline" role="form" action="query/logOut.php" method="POST">
 					<xsl:variable name="userID" select="currentUser/@id"/>
 					<a href="views/profile.php?id={$userID}"><xsl:apply-templates select="currentUser" /></a>
 					<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>
@@ -58,7 +57,7 @@
 			</xsl:if>
 			<xsl:if test="not(currentUser)">
 				<div class="pull-right">
-				<a class="btn btn-default" href="/login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
+				<a class="btn btn-default" href="login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
 				</div>
 			</xsl:if>
 			</div>
@@ -145,7 +144,7 @@
 			<h4><span class="fa fa-rss"></span> <a href="rss.php">Rss <small>link</small></a></h4>
 		</div>
 		<div class="infoCard">
-			<h4><span class="fa fa-code"></span> <a href="/?encoding=json">Convert <small>the xml to json</small></a> <small><i>only all posts xml</i></small></h4>
+			<h4><span class="fa fa-code"></span> <a href="?encoding=json">Convert <small>the xml to json</small></a> <small><i>only all posts xml</i></small></h4>
 		</div>
 
 	</div><!-- end right column -->
@@ -166,7 +165,7 @@
 	Admin? : <xsl:value-of select="@authority"/>-->
 	<p> Inloggad som <xsl:value-of select="@name"/></p>
 	<xsl:if test="@authority = 0">
-		<small><i><a href="../admin.php">adminsida</a></i></small>
+		<small><i><a href="admin.php">adminsida</a></i></small>
 	</xsl:if>
 </xsl:template>
 

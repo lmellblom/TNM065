@@ -25,7 +25,7 @@
 		<div class="container centerAligned">
 			<div>
 				<p>
-					<a href="/">
+					<a href="index.php">
 						<img class="logo img-responsive" src="/img/logo.png" alt="logo" />
 					</a>
 				</p>
@@ -40,7 +40,7 @@
 				</form>
 			</xsl:if>
 			<xsl:if test="not(currentUser)">
-				<a class="btn btn-default" href="/login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
+				<a class="btn btn-default" href="login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
 			</xsl:if>
 			</div>
 		</div>
@@ -73,7 +73,7 @@
 <xsl:template match="currentUser">
 	<p> Inloggad som <xsl:value-of select="@name"/></p>
 	<xsl:if test="@authority = 0">
-		<small><i><a href="../admin.php">adminsida</a></i></small>
+		<small><i><a href="admin.php">adminsida</a></i></small>
 	</xsl:if>
 </xsl:template>
 

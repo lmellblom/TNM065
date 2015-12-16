@@ -43,7 +43,7 @@
 		<div class="container centerAligned">
 			<div>
 				<p>
-					<a href="/">
+					<a href="index.php">
 						<img class="logo img-responsive" src="img/logo.png" alt="logo" /><!--<h1>Moments</h1>-->
 					</a>
 				</p>
@@ -58,7 +58,7 @@
 				</form>
 			</xsl:if>
 			<xsl:if test="not(currentUser)">
-				<a class="btn btn-default" href="/login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
+				<a class="btn btn-default" href="login.php"><span class="fa fa-sign-in"></span> Logga in eller registrera</a>
 			</xsl:if>
 			</div>
 		</div>
@@ -146,7 +146,7 @@
 	
 
 			<h4><span class="fa fa-rss"></span> <a href="rss.php">Rss <small>link</small></a></h4>
-			<h4><span class="fa fa-code"></span> <a href="/?encoding=json">Convert <small>the xml to json</small></a> <small><i>only all posts xml</i></small></h4>
+			<h4><span class="fa fa-code"></span> <a href="?encoding=json">Convert <small>the xml to json</small></a> <small><i>only all posts xml</i></small></h4>
 
 
 	</div><!-- end wrapper -->
@@ -165,7 +165,7 @@
 	Admin? : <xsl:value-of select="@authority"/>-->
 	<p> Inloggad som <xsl:value-of select="@name"/></p>
 	<xsl:if test="@authority = 0">
-		<small><i><a href="../admin.php">adminsida</a></i></small>
+		<small><i><a href="admin.php">adminsida</a></i></small>
 	</xsl:if>
 </xsl:template>
 

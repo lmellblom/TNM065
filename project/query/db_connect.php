@@ -1,5 +1,10 @@
 <?php
-	$con=mysqli_connect("localhost:8889", "root", "root");
+	// lokalt på datorn
+	$host = "localhost:8889"; 
+	$user = "root";
+	$pass = "root";
+
+	$con = mysqli_connect($host, $user, $pass);
 	mysqli_select_db($con,"blogposts");
 	mysqli_query($con,"set names 'utf8'");
 ?>
