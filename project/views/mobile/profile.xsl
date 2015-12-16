@@ -46,7 +46,7 @@
 	                }
 	            }
 	        }
-	        xmlhttp.open("GET", "/query/changePic.php?picture=" + picID);
+	        xmlhttp.open("GET", "../query/changePic.php?picture=" + picID);
 	        xmlhttp.send();
 		};
 	</script>

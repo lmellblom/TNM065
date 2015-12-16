@@ -29,7 +29,7 @@
 	                }
 	            }
 	        };
-	        xmlhttp.open("GET", "/views/createForm.php?postID=" + postID);
+	        xmlhttp.open("GET", "../views/createForm.php?postID=" + postID);
 	        xmlhttp.send();
 		};
 	</script>

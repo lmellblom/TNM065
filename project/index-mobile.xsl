@@ -51,7 +51,7 @@
 
 			<div>
 			<xsl:if test="currentUser">
-				<form class="form-inline" role="form" action="/query/logOut.php" method="POST">
+				<form class="form-inline" role="form" action="query/logOut.php" method="POST">
 					<xsl:variable name="userID" select="currentUser/@id"/>
 					<a href="views/profile.php?id={$userID}"><xsl:apply-templates select="currentUser" /></a>
 					<button type="submit" class="btn btn-default"><span class="fa fa-sign-out"></span> Logga ut</button>

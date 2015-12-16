@@ -1,4 +1,5 @@
 <?php
+
 	// lokalt på datorn
 	$host = "localhost:8889"; 
 	$user = "root";

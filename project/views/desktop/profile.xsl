@@ -28,7 +28,7 @@
 	                }
 	            }
 	        };
-	        xmlhttp.open("GET", "/views/createForm.php?postID=" + postID);
+	        xmlhttp.open("GET", "createForm.php?postID=" + postID);
 	        xmlhttp.send();
 		};
 
@@ -52,7 +52,7 @@
 	                }
 	            }
 	        }
-	        xmlhttp.open("GET", "/query/changePic.php?picture=" + picID);
+	        xmlhttp.open("GET", "../query/changePic.php?picture=" + picID);
 	        xmlhttp.send();
 		};
 	</script>
