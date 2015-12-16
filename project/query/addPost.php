@@ -5,12 +5,12 @@
 
 	include 'db_connect.php';
 
-	// do validation on the form here??
-
-	$user = $_SESSION['userid']; // get from the session id. ska finnas en sådan variabel.. 
+	// get the information from the form and the userid from the session
+	$user = $_SESSION['userid']; 
 	$theText = $_POST[postText]; 
 	$theText = preg_replace("/'/","&#8217;", $theText);
 
+	// do the query
 	$query = "INSERT INTO posts (title, text, userid) 
 	VALUES ('$_POST[postTitle]', '$theText', '$user');";
 
@@ -18,13 +18,12 @@
     	echo mysqli_error();
     }
 
-	// take the hashtags..
+	// save if the user have added hashtags
 	$hashtags = $_POST[postHashtags];
-	// gör inte detta ifall det är tomt!! funkar det??
+	// do not add if the form is empty
 	if ($hashtags != "") {
 		$arrayHashtags = explode(' ', $hashtags);
 		foreach($arrayHashtags as $tag){
-		    //echo $tag.'<br>';  
 		    $query_tag = "INSERT INTO hashtags (postid, name) VALUES (LAST_INSERT_ID(), '$tag');";
 		    if (!mysqli_query($con,$query_tag)) {
 	    		echo mysqli_error();

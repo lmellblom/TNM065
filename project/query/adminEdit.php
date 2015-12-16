@@ -13,11 +13,10 @@
 
     // check if logged in and admin
     if ($_SESSION['isLoggedIn'] && 	$_SESSION['authority']==0) { 
-
     	// if the password is not empty and no spaces then update the salt and the password
     	if($userpwd != "") {
 	    	$escapedPW = mysqli_real_escape_string($con,$userpwd);
-	    	# generate a random salt to use for this account
+	    	// generate a random salt to use for this account
 			$salt = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
 			$saltedPW =  $escapedPW . $salt;
 			$hashedPW = hash('sha256', $saltedPW);
@@ -36,7 +35,6 @@
 		if(!mysqli_query($con,$updateQuery)) {
 			echo mysqli_error();
 		}
-
     } else {
     	mysqli_close($con);
     	header("Location: ../admin.php?message=error?");
@@ -46,5 +44,4 @@
     mysqli_close($con);
 
 	header("Location: ../admin.php?message=successful");
-	//exit();
 ?>

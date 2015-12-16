@@ -5,8 +5,6 @@
 
 	include 'db_connect.php';
 
-	// do validation on the form here??
-
 	if(isset($_GET[delete])) {
 		// if delete, then delete this post, all the likes that are connected to the post and also the hashtags. 
 		$postID = $_GET[delete];
@@ -15,7 +13,7 @@
 		$query1 = "DELETE FROM likes WHERE postid = $postID;";
 		$query2 = "DELETE from hashtags WHERE postid = $postID;";
 
-		// vet inte varför, men gick inte att skicka alla på samma gång.. :/ 
+		// send the querys
 		if(!mysqli_query($con,$query)) {
 			echo mysqli_error();
 		}
@@ -54,8 +52,6 @@
 			}
 		}
 	}
-
     mysqli_close($con);
-
 	header("Location: ../index.php");
 ?>

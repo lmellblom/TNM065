@@ -4,9 +4,9 @@
         session_start();
     }
 
-    // can only like if you are logged in
+    // can only change picture if you are logged in
     if ($_SESSION['isLoggedIn']) {
-    	$userID = $_SESSION['userid']; // can only change your profilepic 
+    	$userID = $_SESSION['userid']; // can only change your profilepic, so pic the current user
     	$picID = $_GET['picture'];
 
 		$query = "UPDATE user SET picture = $picID WHERE id = $userID";

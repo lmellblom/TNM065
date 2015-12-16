@@ -10,11 +10,9 @@
 	// Make a DOMDocument for the XSL stylesheet
 	$xsl = new DOMDocument;
 	
-	// See which user agent is connecting
-
-		// if not a mobile phone, use a html stylesheet
-		header("Content-type:text/html");
-		$xsl->load('form.xsl');
+	// use same xml for all different users
+	header("Content-type:text/html");
+	$xsl->load('form.xsl');
 	
 	// Make the transformation and print the result
 	$proc = new XSLTProcessor;

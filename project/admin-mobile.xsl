@@ -26,7 +26,7 @@
 			<div>
 				<p>
 					<a href="/">
-						<img class="logo img-responsive" src="/img/logo.png" alt="logo" /><!--<h1>Moments</h1>-->
+						<img class="logo img-responsive" src="/img/logo.png" alt="logo" />
 					</a>
 				</p>
 			</div>
@@ -126,7 +126,6 @@
 		</p>
 		<!-- change password -->
 		<p>Lösen: <input type="password" class="form-control" name= "pwd" placeholder="Password" /></p>
-
 
 		<!-- button that saves, updates -->
 		<p><button type="submit" class="btn btn-default">Update</button></p>

@@ -48,8 +48,6 @@
 		        $returnstring = $returnstring . "</user>";
 
 		    }
-			// kunna ändra lösenord och användarnamn?
-			// if updating password, then updating the salt also!!
 		} else {
 			$returnstring = $returnstring . "<errorMessage> Inte behörig användare för att vara på denna sida. </errorMessage>";
 		}

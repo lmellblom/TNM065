@@ -55,22 +55,6 @@
 	        xmlhttp.open("GET", "/query/changePic.php?picture=" + picID);
 	        xmlhttp.send();
 		};
-
-		function likeThePost(postID) {
-		console.log("like the post " + postID);
-			var xmlhttp = new XMLHttpRequest();
-	        xmlhttp.onreadystatechange = function() {
-	            if (xmlhttp.readyState == 4) {
-	            	if(xmlhttp.status == 200){
-	                	// change the class of that object that clicked on..
-
-	                	// add the name to the stuff
-	                }
-	            }
-	        };
-	        xmlhttp.open("GET", "/query/likePost.php?postID=" + postID);
-	        xmlhttp.send();
-		};
 	</script>
 
 	<title>TNM065 | moments</title>
@@ -81,7 +65,7 @@
 		<div class="container">
 		<div class="row">
 			<div class="col-xs-6">
-			<a href="/"><img class="logo img-responsive" src="/img/logo.png" alt="logo" /><!--<h1>Moments</h1>--></a>
+			<a href="/"><img class="logo img-responsive" src="/img/logo.png" alt="logo" /></a>
 			</div>
 
 			<div class="col-xs-6">
@@ -109,10 +93,6 @@
 	<div class="col-sm-8 posts">
 		<h3><span class="text-capitalize"><xsl:apply-templates select="profile/@name" />s</span> feed</h3>
 		<div id="showPosts">
-			<!--<xsl:apply-templates select="post[author[@id=1]]" />-->
-			<!--<xsl:apply-templates select="post[hashtags[hashtag[contains(text(), 'ta')]]]" />, väljer ut hashtags. -->
-			<!--<xsl:apply-templates select="post[hashtags[hashtag[contains(text(), '')]]]" />-->
-			<!-- check if post is empty, then write a text message instead -->
 			<xsl:if test="search">
 				<h4>Du sökte pa <xsl:value-of select="search"/></h4>
 			</xsl:if>
@@ -161,11 +141,8 @@
 			<xsl:variable name="userID" select="currentUser/@id"/>
 			
 			<a class="btn btn-default btn-sm" onclick="changePic({$userID})">Spara val</a>
-
 		</xsl:if>
 
-
-	<!-- show all hashtags that are here. blir lite fel om man söker på user, får bara dess hahstags osv... -->
 	<!-- show all hashtags that are here. blir lite fel om man söker på user, får bara dess hahstags osv... -->
 		<div>
 			<h4>Alla hashtags som <span class="text-capitalize"><xsl:value-of select="profile/@name"/></span> använt</h4>
@@ -191,9 +168,6 @@
 </xsl:template> 
 
 <xsl:template match="currentUser">
-	<!--ID: <xsl:value-of select="@id"/>, 
-	Namn: <xsl:value-of select="@name"/>, 
-	Admin? : <xsl:value-of select="@authority"/>-->
 	<p> Inloggad som <xsl:value-of select="@name"/></p>
 	<xsl:if test="@authority = 0">
 		<small><i><a href="../admin.php">adminsida</a></i></small>
@@ -265,8 +239,6 @@
 						<span class="likeNotLoggedIn fa-2x fa fa-heart"></span>
 					</xsl:otherwise>
 				</xsl:choose>
-
-		 		
 		 	</p>
 	 	</div>
 	 	<div class="col-xs-10">

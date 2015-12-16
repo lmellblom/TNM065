@@ -41,7 +41,7 @@
 			<div>
 				<p>
 					<a href="/">
-						<img class="logo img-responsive" src="/img/logo.png" alt="logo" /><!--<h1>Moments</h1>-->
+						<img class="logo img-responsive" src="/img/logo.png" alt="logo" />
 					</a>
 				</p>
 			</div>
@@ -150,8 +150,6 @@
 						<span class="likeNotLoggedIn fa-2x fa fa-heart"></span>
 					</xsl:otherwise>
 				</xsl:choose>
-
-		 		
 		 	</p>
 	 	</div>
 	 	<div class="col-xs-10">

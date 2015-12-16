@@ -51,7 +51,7 @@
         $picid = $line->picture;
 
         $date = strtotime($date);
-        $date = date('Y.m.d H:i',$date);//date('c', $date);
+        $date = date('Y.m.d H:i',$date); //date('c', $date);
 
         // bygg upp en sträng innehållande det resultat vi vill ha
         // slå ihop två strängar med ".".blogposts
@@ -104,10 +104,8 @@
     }
     
     // koda för säkerhets skull om till utf-8 innan resultatet
-    // skrivs ut. utf8_encode
+    // skrivs ut. utf8_encode (tog bort detta.. lägg tillbaka om det ej funkar..)
     print ($returnstring); 
-
-    
 
     mysqli_close($con);
     ?>

@@ -40,7 +40,7 @@
 		<div class="container">
 		<div class="row">
 			<div class="col-xs-6">
-			<a href="/"><img class="logo img-responsive" src="/img/logo.png" alt="logo" /><!--<h1>Moments</h1>--></a>
+			<a href="/"><img class="logo img-responsive" src="/img/logo.png" alt="logo" /></a>
 			</div>
 
 			<div class="col-xs-6">
@@ -202,9 +202,6 @@
  </xsl:template>
 
  <xsl:template match="currentUser">
-	<!--ID: <xsl:value-of select="@id"/>, 
-	Namn: <xsl:value-of select="@name"/>, 
-	Admin? : <xsl:value-of select="@authority"/>-->
 	<p> Inloggad som <xsl:value-of select="@name"/></p>
 	<xsl:if test="@authority = 0">
 		<small><i><a href="../admin.php">adminsida</a></i></small>

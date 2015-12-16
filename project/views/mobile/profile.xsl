@@ -60,7 +60,7 @@
 			<div>
 				<p>
 					<a href="/">
-						<img class="logo img-responsive" src="/img/logo.png" alt="logo" /><!--<h1>Moments</h1>-->
+						<img class="logo img-responsive" src="/img/logo.png" alt="logo" />
 					</a>
 				</p>
 			</div>
@@ -119,10 +119,6 @@
 
 	<div class="posts">
 		<div id="showPosts">
-			<!--<xsl:apply-templates select="post[author[@id=1]]" />-->
-			<!--<xsl:apply-templates select="post[hashtags[hashtag[contains(text(), 'ta')]]]" />, väljer ut hashtags. -->
-			<!--<xsl:apply-templates select="post[hashtags[hashtag[contains(text(), '')]]]" />-->
-			<!-- check if post is empty, then write a text message instead -->
 			<xsl:if test="search">
 				<h4>Du sökte pa <xsl:value-of select="search"/></h4>
 			</xsl:if>
@@ -136,7 +132,6 @@
 				</xsl:otherwise>
 			</xsl:choose>			
 		</div>
-
 	</div>
 
 	<!-- show all hashtags that are here. blir lite fel om man söker på user, får bara dess hahstags osv... -->
@@ -154,7 +149,6 @@
 
 	</div><!-- end wrapper -->
 
-
 	<!-- footer -->
 	<div class="jumbotron" id="footer">
 	</div>
@@ -164,9 +158,6 @@
 </xsl:template> 
 
 <xsl:template match="currentUser">
-	<!--ID: <xsl:value-of select="@id"/>, 
-	Namn: <xsl:value-of select="@name"/>, 
-	Admin? : <xsl:value-of select="@authority"/>-->
 	<p> Inloggad som <xsl:value-of select="@name"/></p>
 	<xsl:if test="@authority = 0">
 		<small><i><a href="../admin.php">adminsida</a></i></small>
@@ -177,11 +168,6 @@
  	<div class="well well-sm" id="{generate-id(.)}">
 
 	<div class="row posts">
-		<!--<div class="col-xs-2 alignCenter">
-			<xsl:variable name="picID" select="author/@picid"/>
-			<img class="img-responsive img-circle" src="../img/user/{$picID}.jpg" alt="user" />
-		</div>-->
-
 		<div class="col-xs-12">
 		 	<h4 class="text-uppercase"><xsl:value-of select="title"/> 
 		 		<!-- vilket datum -->
@@ -237,8 +223,6 @@
 						<span class="likeNotLoggedIn fa-2x fa fa-heart"></span>
 					</xsl:otherwise>
 				</xsl:choose>
-
-		 		
 		 	</p>
 	 	</div>
 	 	<div class="col-xs-10">

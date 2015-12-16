@@ -16,7 +16,6 @@
 	// saved hashed passwords instead
 	$escapedName = mysqli_real_escape_string($con,$username);
 	$escapedPW = mysqli_real_escape_string($con,$pwd);
-
 	$saltQuery = "SELECT salt FROM user WHERE name = '$escapedName';";
 	$result = mysqli_query($con,$saltQuery);
 	if(!mysqli_query($con,$result)) {
@@ -56,5 +55,4 @@
     mysqli_close($con);
 
 	header("Location: ../index.php");
-	//exit();
 ?>
